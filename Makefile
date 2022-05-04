@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Werror -Wall -pedantic -Wno-long-long -O0 -ggdb
-EXECUTABLE = knapejar
+EXECUTABLE = pacman
 SOURCES := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp)
 CHECK = valgrind
 CHECKFLAGS = --leak-check=full --tool=memcheck
