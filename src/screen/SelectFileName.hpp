@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Menu : public Screen{
+class SelectFileName : public Screen{
     public:
-        ScreenState show();
+        ScreenState show(string FileName);
 };
