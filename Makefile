@@ -12,6 +12,15 @@ COLOR_STATUS = \033[1;33m
 COLOR_INFO = \033[1;36m
 COLOR_GOOD = \033[1;32m
 COLOR_BAD = \033[1;31m
+COLOR_WARN = \033[1;35m
+COLOR_ERROR = \033[1;31m
+COLOR_DEBUG = \033[1;34m
+COLOR_HEADER = \033[1;37m
+COLOR_UNDERLINE = \033[4m
+COLOR_BLINK = \033[5m
+COLOR_INVERT = \033[7m
+COLOR_HIDDEN = \033[8m
+COLOR_STRIKE = \033[9m
 
 %.o: %.cpp
 	@echo "$(COLOR_STATUS)$^ -> $@$(COLOR_DEFAULT)"
@@ -26,14 +35,14 @@ compile: $(SOURCES:.cpp=.o)
 	@echo "$(COLOR_GOOD)COMPILE OK$(COLOR_DEFAULT)"
 
 run: compile
-	@echo "$(COLOR_INFO)starting executable$(COLOR_DEFAULT)"
+	@echo "$(COLOR_INFO)$(COLOR_RESET)starting executable$(COLOR_DEFAULT)"
 	@./$(EXECUTABLE)
-	@echo "$(COLOR_GOOD)RUN OK$(COLOR_DEFAULT)"
+	@echo "$(COLOR_GOOD)$(COLOR_INVERT)RUN OK$(COLOR_DEFAULT)"
 
 doc:
-	@echo "$(COLOR_INFO)generating documentation$(COLOR_DEFAULT)"
+	@echo "$(COLOR_INFO)$(COLOR_INVERT)generating documentation$(COLOR_DEFAULT)"
 	doxygen Doxyfile
-	@echo "$(COLOR_GOOD)DOC OK$(COLOR_DEFAULT)"
+	@echo "$(COLOR_GOOD)$(COLOR_INVERT)DOC OK$(COLOR_DEFAULT)"
 
 clean:
 	@echo "$(COLOR_INFO)removing object files$(COLOR_DEFAULT)"

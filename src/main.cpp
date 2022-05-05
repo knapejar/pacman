@@ -1,6 +1,10 @@
 #include <iostream>
+#include "menu/Menu.hpp"
+#include "game/Game.hpp"
+
+using namespace std;
 
 int main(){
-    std::cout << "Hello semestral work!" << std::endl;
+    cout << "Hello semestral work!" << endl;
     return 0;
 }
