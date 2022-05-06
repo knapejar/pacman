@@ -21,8 +21,8 @@ int main(){
     while (current != ScreenState::EXIT){
         switch (current){
             case ScreenState::MENU:
+                //Menu().show();
                 Menu().show();
-                //current = Menu::show();
                 break;
             case ScreenState::GAME:
                 //Game game();

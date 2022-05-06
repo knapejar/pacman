@@ -1,5 +1,8 @@
 #include "Menu.hpp"
 
+Menu::Menu() {
+    //To be implemented
+}
 
 
 WINDOW *create_newwin(int height, int width, int starty, int startx);
@@ -21,10 +24,10 @@ ScreenState Menu::show() {
 	width = 50;
 	starty = (LINES - height) / 2;	/* Calculating for a center placement */
 	startx = (COLS - width) / 2;	/* of the window		*/
-	printw("Press F1 to exit");
+	printw("Press F1 to exit +ěčřčěšř asdfasdf");
 	refresh();
 	my_win = create_newwin(height, width, starty, startx);
-	wprintw(my_win, "Inside the window text 123123123123123123123123123123123123123123123123123123123123123123123123123123");
+	wprintw(my_win, "\n Inside the window text test");
     
     wresize(my_win, 100, 20);
     wrefresh(my_win);
@@ -59,10 +62,8 @@ WINDOW *create_newwin(int height, int width, int starty, int startx)
 {	WINDOW *local_win;
 
 	local_win = newwin(height, width, starty, startx);
-	box(local_win, 0 , 0);		/* 0, 0 gives default characters 
-					 * for the vertical and horizontal
-					 * lines			*/
-	wrefresh(local_win);		/* Show that box 		*/
+	box(local_win, 0 , 0);
+	wrefresh(local_win);
 
 	return local_win;
 }
