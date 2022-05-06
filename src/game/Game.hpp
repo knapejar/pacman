@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "map/Map.hpp"
+#include "map/Map.hpp"
 
 #include <iostream>
 #include <string>
@@ -10,7 +10,7 @@ using namespace std;
 
 class Game{
     private:
-        //Map map;
+        Map map;
     public:
         Game();
         Game(string fileName);

@@ -1,6 +1,7 @@
 #include "Game.hpp"
 
 Game::Game() {
+    this->map = Map();
     //To be implemented
 }
 

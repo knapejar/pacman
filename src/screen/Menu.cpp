@@ -9,53 +9,57 @@ WINDOW *create_newwin(int height, int width, int starty, int startx);
 void destroy_win(WINDOW *local_win);
 
 ScreenState Menu::show() {
-    //Initialize variables
-    
-    WINDOW *my_win;
-	int startx, starty, width, height;
-	int ch;
+    WINDOW *w;
+    char list[4][7] = { "Play", "Load", "About", "Exit" };
+    char item[9];
+    int ch, i = 0;
+    initscr(); // initialize Ncurses
+	int height = 10;
+	int width = 12;
+    int starty = (LINES - height) / 2;	/* Calculating for a center placement */
+	int startx = (COLS - width) / 2;	/* of the window		*/
+	w = create_newwin(height, width, starty, startx);
+    // now print all the menu items and highlight the first one
+    for( i=0; i<4; i++ ){
+        if( i == 0 ) 
+            wattron( w, A_STANDOUT ); // highlights the first item.
+        else
+            wattroff( w, A_STANDOUT );
+        sprintf(item, "%-7s",  list[i]);
+        mvwprintw( w, i+1, 2, "%s", item );
+    }
+    wrefresh( w ); // update the terminal screen
+    i = 0;
+    noecho(); // disable echoing of characters on the screen
+    keypad( w, TRUE ); // enable keyboard input for the window.
+    curs_set( 0 ); // hide the default screen cursor.
+    // get the input
+    while((ch = wgetch(w)) != 10){ 
+        // right pad with spaces to make the items appear with even width.
+        sprintf(item, "%-7s",  list[i]); 
+        mvwprintw( w, i+1, 2, "%s", item ); 
+        // use a variable to increment or decrement the value based on the input.
+        switch( ch ) {
+            case KEY_UP:
+                i--;
+                i = ( i<0 ) ? 3 : i;
+                break;
+            case KEY_DOWN:
+                i++;
+                i = ( i>3 ) ? 0 : i;
+                break;
+            }
+        // now highlight the next item in the list.
+        wattron( w, A_STANDOUT );
+        sprintf(item, "%-7s",  list[i]);
+        mvwprintw( w, i+1, 2, "%s", item);
+        wattroff( w, A_STANDOUT );
+    }
+    delwin( w );
+    endwin();
 
-	initscr();			/* Start curses mode 		*/
-	cbreak();			/* Line buffering disabled, Pass on
-					 * everty thing to me 		*/
-	keypad(stdscr, TRUE);		/* I need that nifty F1 	*/
 
-	height = 20;
-	width = 50;
-	starty = (LINES - height) / 2;	/* Calculating for a center placement */
-	startx = (COLS - width) / 2;	/* of the window		*/
-	printw("Press F1 to exit +ěčřčěšř asdfasdf");
-	refresh();
-	my_win = create_newwin(height, width, starty, startx);
-	wprintw(my_win, "\n Inside the window text test");
-    
-    wresize(my_win, 100, 20);
-    wrefresh(my_win);
-
-	while((ch = getch()) != KEY_F(1))
-	{	switch(ch)
-		{	case KEY_LEFT:
-				destroy_win(my_win);
-				my_win = create_newwin(height, width, starty,--startx);
-				break;
-			case KEY_RIGHT:
-				destroy_win(my_win);
-				my_win = create_newwin(height, width, starty,++startx);
-				break;
-			case KEY_UP:
-				destroy_win(my_win);
-				my_win = create_newwin(height, width, --starty,startx);
-				break;
-			case KEY_DOWN:
-				destroy_win(my_win);
-				my_win = create_newwin(height, width, ++starty,startx);
-				break;	
-		}
-	}
-		
-	endwin();
-
-    return ScreenState::GAME;
+    return ScreenState::EXIT;
 }
 
 WINDOW *create_newwin(int height, int width, int starty, int startx)

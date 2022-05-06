@@ -16,17 +16,18 @@ using namespace std;
  * */
 
 int main(){
+    Menu menu = Menu();
+    Game game;
     ScreenState current = ScreenState::MENU;
     
     while (current != ScreenState::EXIT){
         switch (current){
             case ScreenState::MENU:
-                //Menu().show();
-                Menu().show();
+                current = menu.show();
                 break;
             case ScreenState::GAME:
-                //Game game();
-                //game.run();
+                game = Game();
+                game.run();
                 break;
             case ScreenState::LOAD:
                 //Game game(SelectFileName::show("Load game"));

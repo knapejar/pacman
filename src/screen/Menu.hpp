@@ -2,6 +2,7 @@
 
 #include "Screen.hpp"
 #include <ncurses.h>
+#include <string.h>
 
 using namespace std;
 
