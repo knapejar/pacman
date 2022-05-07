@@ -2,8 +2,20 @@
 
 Map::Map(){
     //Declare initial map 
-    width = 20;
-    height = 15;
+    width = 17;
+    height = 10;
+    fieldType n = NONE;
+    fieldType w = WALL;
+    map = { {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n)}};
 }
 
 Map::~Map(){
@@ -23,4 +35,13 @@ int Map::getWidth(){
 
 int Map::getHeight(){
     return this->height;
+}
+
+ostream & Map::render(ostream & os){
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            map[i][j].render(os);
+        }
+    }
+    return os;
 }

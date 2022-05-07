@@ -1,3 +1,5 @@
+#pragma once
+
 #define UP 0
 #define RIGHT 1
 #define DOWN 2

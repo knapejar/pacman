@@ -15,10 +15,13 @@ class Entity{
     private:
         Position position;
         Angle angle;
+        bool isAlive = true;
+        string name;
+        string saveName = "?";
+        string renderName = "<>";
     public:
         Entity();
+        Entity(Position position, Angle angle);
         ~Entity();
-        pair<int,int> getPos();
-
-    
+        Entity tick();
 };

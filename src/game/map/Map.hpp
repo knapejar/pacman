@@ -21,4 +21,5 @@ class Map{
         Field getField(int x, int y);
         int getWidth();
         int getHeight();
+        ostream & render(ostream & os);
 };

@@ -4,6 +4,10 @@ Field::Field(){
     this->field = NONE;
 }
 
+Field::Field(fieldType field){
+    this->field = field;
+}
+
 Field::~Field(){
     
 }

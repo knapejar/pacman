@@ -4,11 +4,16 @@ Entity::Entity(){
 
 }
 
+Entity::Entity(Position position, Angle angle){
+    this->position = position;
+    this->angle = angle;
+}
+
 Entity::~Entity(){
 
 }
 
-pair<int,int> Entity::getPos(){
-    return (make_pair(x, y));
+Entity Entity::tick(){
+    return *this;
 }
 

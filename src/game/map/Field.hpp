@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 using namespace std;
@@ -15,7 +17,8 @@ class Field {
         enum fieldType field;
 
     public:
-        Field();    
+        Field();
+        Field(fieldType field);
         ~Field();
         Field getField();
         void setField(fieldType field);

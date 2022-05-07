@@ -1,9 +1,12 @@
 #pragma once
 
+#include <ncurses.h>
+
 #include "map/Map.hpp"
 #include "entity/EntityManager.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 

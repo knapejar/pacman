@@ -17,10 +17,10 @@ using namespace std;
 
 int main(){
     Menu menu = Menu();
-    Game game;
+    Game game = Game();
 
     //Temporary turn on the game wight after the start
-    game = Game();
+    
     game.run();
 
     ScreenState current = ScreenState::MENU;
