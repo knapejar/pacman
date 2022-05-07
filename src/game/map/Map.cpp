@@ -55,3 +55,7 @@ ostream & Map::render(ostream & os){
     }
     return os;
 }
+
+bool Map::wall(Position position){
+    return map[position.getY()][position.getX()].wall();
+}

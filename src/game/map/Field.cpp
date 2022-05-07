@@ -46,3 +46,7 @@ ostream & Field::render(ostream & os){
     }
     return os;
 }
+
+bool Field::wall(){
+    return field == WALL;
+}

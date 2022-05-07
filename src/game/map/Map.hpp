@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Field.hpp"
+#include "../entity/Position.hpp"
 
 #include <iostream>
 #include <string>
@@ -22,4 +23,5 @@ class Map{
         int getWidth();
         int getHeight();
         ostream & render(ostream & os);
+        bool wall(Position position);
 };

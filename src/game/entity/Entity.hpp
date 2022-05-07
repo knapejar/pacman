@@ -23,6 +23,9 @@ class Entity{
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
+        Position getPosition();
+        Entity setPosition(Position position);
+        Angle getAngle();
         Entity setAngle(Angle angle);
         Entity tick();
 };

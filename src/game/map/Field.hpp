@@ -25,5 +25,5 @@ class Field {
         istream & load(istream & is);
         ostream & save(ostream & os);
         ostream & render(ostream & os);
-        
+        bool wall();
 };
