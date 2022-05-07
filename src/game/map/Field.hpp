@@ -1,7 +1,8 @@
+#include <iostream>
 
 using namespace std;
 
-enum fields {
+enum fieldType {
     NONE,
     WALL,
     POINT,
@@ -11,12 +12,15 @@ enum fields {
 
 class Field {
     private:
-        fields field;
+        enum fieldType field;
 
     public:
         Field();    
         ~Field();
         Field getField();
-        void setField(fields field);
+        void setField(fieldType field);
+        istream & load(istream & is);
+        ostream & save(ostream & os);
+        ostream & render(ostream & os);
         
 };

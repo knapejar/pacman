@@ -6,7 +6,8 @@ Game::Game() {
 }
 
 Game::Game(string fileName) {
-    //To be implemented
+    this->map = Map();
+    //Load from the filename
 }
 
 Game::~Game() {

@@ -1,15 +1,13 @@
 #include "Map.hpp"
 
 Map::Map(){
-    //To be implemented
-}
-
-Map::Map(int width, int height){
-
+    //Declare initial map 
+    width = 20;
+    height = 15;
 }
 
 Map::~Map(){
-    
+
 }
 
 void Map::setField(int x, int y, Field field){

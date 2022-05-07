@@ -1,6 +1,7 @@
 #pragma once
 
 #include "map/Map.hpp"
+#include "entity/EntityManager.hpp"
 
 #include <iostream>
 #include <string>
@@ -16,5 +17,6 @@ class Game{
         Game(string fileName);
         ~Game();
         void run();
+
     
 };

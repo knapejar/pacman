@@ -6,5 +6,6 @@ using namespace std;
 
 class Screen{
     public:
+        Screen();
         virtual ScreenState show() = 0;
 };

@@ -17,7 +17,6 @@ class Map{
     public:
         Map();
         ~Map();
-        Map(int width, int height);
         void setField(int x, int y, Field field);
         Field getField(int x, int y);
         int getWidth();

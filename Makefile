@@ -23,11 +23,13 @@ COLOR_INVERT = \033[7m
 COLOR_HIDDEN = \033[8m
 COLOR_STRIKE = \033[9m
 
+## Targets
+
 %.o: %.cpp
 	@echo "$(COLOR_STATUS)$^ -> $@$(COLOR_DEFAULT)"
 	@$(CXX) $(CXXFLAGS) -c -o $@ -c $< $(LDFLAGS)
 	@$(CXX) $(CXXFLAGS) -MM -MT $*.o $*.cpp $(LDFLAGS) > $*.d
-	
+
 all: doc compile
 
 compile: $(SOURCES:.cpp=.o)
@@ -39,6 +41,8 @@ run: compile
 	@echo "$(COLOR_INFO)$(COLOR_RESET)starting executable$(COLOR_DEFAULT)"
 	@./$(EXECUTABLE)
 	@echo "$(COLOR_GOOD)$(COLOR_INVERT)RUN OK$(COLOR_DEFAULT)"
+
+## Documentation
 
 doc:
 	@echo "$(COLOR_INFO)$(COLOR_INVERT)generating documentation$(COLOR_DEFAULT)"
@@ -55,7 +59,7 @@ clean:
 	@echo "$(COLOR_INFO)removing documentation files$(COLOR_DEFAULT)"
 	@rm -rf -- doc/
 	@echo "$(COLOR_GOOD)CLEAN OK$(COLOR_DEFAULT)"
-
+	
 help:
 	@echo "Usage: $(COLOR_INFO)make$(COLOR_DEFAULT) $(COLOR_STATUS)[TARGET]$(COLOR_DEFAULT)"
 	@echo
