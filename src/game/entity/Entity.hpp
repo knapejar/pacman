@@ -23,5 +23,6 @@ class Entity{
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
+        Entity setAngle(Angle angle);
         Entity tick();
 };

@@ -38,7 +38,7 @@ ostream & Field::render(ostream & os){
             os << "  ";
             break;
         case WALL:
-            os << "[]";
+            os << "██";
             break;
         case POINT:
             os << "()";

@@ -2,6 +2,7 @@
 //#include "screen/SelectFileName.hpp"
 #include "game/Game.hpp"
 
+#include <locale.h>
 
 using namespace std;
 
@@ -16,6 +17,8 @@ using namespace std;
  * */
 
 int main(){
+    setlocale(LC_ALL, "");
+
     Menu menu = Menu();
     Game game = Game();
 

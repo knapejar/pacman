@@ -3,7 +3,7 @@
 Map::Map(){
     //Declare initial map 
     width = 17;
-    height = 10;
+    height = 19;
     fieldType n = NONE;
     fieldType w = WALL;
     map = { {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)},
@@ -14,8 +14,18 @@ Map::Map(){
             {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
             {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w)},
             {Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n)},
-            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
-            {Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n)}};
+            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
+            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)}
+        };
 }
 
 Map::~Map(){

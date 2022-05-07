@@ -16,6 +16,7 @@ Game::~Game(){
 
 void Game::run(){
     initscr();
+    start_color();
     curs_set(0);
     WINDOW *window;
     int starty = (LINES - map.getHeight()) / 2;
@@ -30,11 +31,35 @@ void Game::run(){
     ostringstream ss;
     map.render(ss);
     mvwprintw(window, 0, 0, ss.str().c_str());
+    init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(2, COLOR_RED, COLOR_BLACK);
+    //wattron(window, COLOR_PAIR(1));
+    //mvwprintw(window, 1, 2, "▄▄");
+    //wattron(window, COLOR_PAIR(1));
+    //mvwprintw(window, 2, 2, "▀▀");
+    keypad(window, TRUE ); // enable keyboard input for the window.
+    int ch;
+    while((ch = wgetch(window)) != 10){
+        switch( ch ) {
+            case KEY_UP:
+                player.setAngle(UP);
+                break;
+            case KEY_DOWN:
+                player.setAngle(DOWN);
+                break;
+            case KEY_LEFT:
+                player.setAngle(LEFT);
+                break;
+            case KEY_RIGHT:
+                player.setAngle(RIGHT);
+                break;
+        };
+        
+        player.tick();
 
-    while(true){
-        mvwaddstr(window, 2, 2, "Hello World!");
+        //mvwaddstr(window, 2, 2, "Hello World!");
         string str = to_string(c);
-        mvwaddstr(window, 0, 0, str.c_str());
+        //mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
         napms(100);
         c++;

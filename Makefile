@@ -4,7 +4,7 @@ EXECUTABLE = pacman
 SOURCES := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp)
 CHECK = valgrind
 CHECKFLAGS = --leak-check=full --tool=memcheck
-LDFLAGS = -lncurses
+LDFLAGS = -lncursesw
 
 ## Colors
 
