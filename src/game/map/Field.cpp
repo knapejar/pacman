@@ -41,7 +41,7 @@ ostream & Field::render(ostream & os){
             os << "██";
             break;
         case POINT:
-            os << "  ";
+            os << "<>";
             break;
     }
     return os;

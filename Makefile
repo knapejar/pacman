@@ -59,13 +59,3 @@ clean:
 	@echo "$(COLOR_INFO)removing documentation files$(COLOR_DEFAULT)"
 	@rm -rf -- doc/
 	@echo "$(COLOR_GOOD)CLEAN OK$(COLOR_DEFAULT)"
-	
-help:
-	@echo "Usage: $(COLOR_INFO)make$(COLOR_DEFAULT) $(COLOR_STATUS)[TARGET]$(COLOR_DEFAULT)"
-	@echo
-	@echo "TARGETS:"
-	@echo "  $(COLOR_STATUS)all$(COLOR_DEFAULT)       create all outputs generated from source code"
-	@echo "  $(COLOR_STATUS)compile$(COLOR_DEFAULT)   compiles outdated object files and creates the executable"
-	@echo "  $(COLOR_STATUS)run$(COLOR_DEFAULT)       does the 'compile' task and then runs the executable file"
-	@echo "  $(COLOR_STATUS)clean$(COLOR_DEFAULT)     removes all of the compiled files and executable"
-	@echo "  $(COLOR_STATUS)help$(COLOR_DEFAULT)      print this message"

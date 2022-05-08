@@ -8,12 +8,10 @@ Readme to be done :)
 
 
 
-## Features
+## The game is playable right now
 
-- Feature one
-- Feature two
-- Feature three
-- Feature four
+- make run
+- enjoy :)
 
 
 

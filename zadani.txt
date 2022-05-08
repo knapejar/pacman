@@ -1,11 +1,32 @@
 # Pacman
 
--- Mé upřesnění zadání:
+
+
+
+
+Hra je plně spustitelná! (i hratelná) :)
 
 Jak spustit
 
 Start: make run - výsledný soubor: ./pacman
 Dokumentace: make doc
+
+
+
+
+
+
+-- Mé upřesnění zadání:
+
+Pacman bude umožňovat následující herní módy:
+
+Jednoduchá hra - nesmrtelný hráč
+Normální hra, 3 životy
+Složitá hra, 1 životy
+
+Duchů bude moct být až 4, každý bude disponovat vlastním algoritmem pro navigaci po hřišti inspirovaným originální hrou
+
+Hra bude umět načítat a ukládat herní mapy do lidsky čitelného formátu, aby byla snáz editovatelná
 
 
 

@@ -70,7 +70,8 @@ void Game::run(){
     int ch;    
     keypad(window, TRUE );
 
-    init_pair(2, 7, 8);
+    //init_pair(2, 7, 8);
+    init_pair(2, 7, COLOR_BLACK);
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     wattron(window, COLOR_PAIR(2));
     ostringstream ss;
@@ -94,7 +95,7 @@ void Game::run(){
         renderAll();
 
         //mvwaddstr(window, 2, 2, "Hello World!");
-        string str = to_string(player.getScore());
+        string str = to_string(player.getScore()); //map.maxScore()
         mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
         napms(tickLength);

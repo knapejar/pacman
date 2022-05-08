@@ -4,4 +4,6 @@ Mateřskou třídou je třída src/game/entity/Entity.hpp, která se stará o uc
 Jejímy potomky jsou poté všichni duchové a hráči.
 Třída hráče (src/game/entity/Player.hpp) je potomkem třídy Entity.
 Třída duchové (src/game/entity/Ghost.hpp) je také potomkem třídy Entity.
-Všichni duchové budou dědit z třídy Ghost. Budou disponovat vlastním navigačním algoritmem.
+Všichni duchové budou dědit z třídy Ghost. Budou disponovat vlastním navigačním algoritmem, hlavičky jsou připravené.
+
+Pokud by toto nebylo dostatečné zastoupení polymorfismu, nabízí se jej využít také ve třídě src/game/map/Field.hpp, ze které by dědily třídy Wall, Point, Empty, Ghost, Player, ...
