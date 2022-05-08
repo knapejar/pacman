@@ -52,7 +52,7 @@ Entity Entity::hide(WINDOW *window){
 Entity Entity::render(WINDOW *window){
     init_pair(1, this->color, COLOR_BLACK);
     wattron(window, COLOR_PAIR(1));
-    mvwprintw(window, position.getY(), position.getX()*2, renderName.c_str());
+    mvwprintw(window, position.getY(), position.getX()*2, "██");
     return *this;
 }
 

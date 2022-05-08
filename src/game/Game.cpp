@@ -15,10 +15,38 @@ Game::~Game(){
     //To be implemented
 }
 
+void Game::renderAll(){
+    player.render(window);
+    for (auto ghost : ghosts){
+        ghost.render(window);
+    }
+}
+
+void Game::renderHalfAll(){
+    player.renderHalf(window);
+    for (auto ghost : ghosts){
+        ghost.renderHalf(window);
+    }
+}
+
+void Game::tickAll(){
+    player.tick();
+    for (auto ghost : ghosts){
+        ghost.tick();
+    }
+}
+
+void Game::hideAll(){
+    player.hide(window);
+    for (auto ghost : ghosts){
+        ghost.hide(window);
+    }
+}
+
 int readOneChar(WINDOW * window){
     int tmpch;
     int ch = -1;
-    for (int i = 0; i < 10; i++){ //Flush the buffer
+    for (int i = 0; i < 1; i++){ //Flush the buffer
         tmpch = wgetch(window);
         if (tmpch != -1){
             ch = tmpch;
@@ -31,49 +59,42 @@ void Game::run(){
     initscr();
     start_color();
     curs_set(0);
-    WINDOW *window;
     int starty = (LINES - map.getHeight()) / 2;
 	int startx = (COLS - (2 * map.getWidth())) / 2;
 
     window = newwin(map.getHeight(), (2 * map.getWidth()), starty, startx);
-    //cbreak();
     noecho();
     wtimeout(window, 0);
 
-    wrefresh(window);
-
     int c = 0;
+    int ch;    
+    keypad(window, TRUE );
 
+    init_pair(2, 7, 8);
+    init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+    wattron(window, COLOR_PAIR(2));
     ostringstream ss;
     map.render(ss);
     mvwprintw(window, 0, 0, ss.str().c_str());
-    init_pair(1, COLOR_YELLOW, COLOR_BLACK);
-    init_pair(2, COLOR_RED, COLOR_BLACK);
-    //wattron(window, COLOR_PAIR(1));
-    //mvwprintw(window, 1, 2, "▄▄");
-    //wattron(window, COLOR_PAIR(1));
-    //mvwprintw(window, 2, 2, "▀▀");
-    keypad(window, TRUE ); // enable keyboard input for the window.
-    int ch;
+    wrefresh(window);
 
-    while((ch = readOneChar(window)) != 27){
+    while((ch = readOneChar(window)) && ch != 27){
         
         player.keyboardInput(ch);
-        player.hide(window);
-        player.tick();
-        player.hide(window);
-        player.renderHalf(window);
+
+        //Animation stage in the tick
+        hideAll();
+        tickAll();
+        renderHalfAll();
         wrefresh(window);
         napms(tickLength);
 
-        ch = readOneChar(window);
-        player.keyboardInput(ch);
-
-        player.hide(window);
-        player.render(window);
+        //Second stage in the tick
+        hideAll();
+        renderAll();
 
         //mvwaddstr(window, 2, 2, "Hello World!");
-        string str = to_string(ch);
+        string str = to_string(player.getScore());
         mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
         napms(tickLength);

@@ -8,10 +8,14 @@ class Player : public Entity{
         string saveName = "P";
         string renderName = "XX";
         Angle targetAngle;
+        int score = 0;
     public:
         Player();
         Player(Position position, Angle angle);
         ~Player();
         Player keyboardInput(int input);
         Player tick();
+        Player resetScore();
+        int getScore();
+        Player addScore();
 };

@@ -38,5 +38,20 @@ Player Player::tick(){ //Overrided function to move the player
     if (!map->wall(nextPosition)){
         this->position = nextPosition;
     }
+    if (map->collect(this->position)){
+        this->score += 1;
+    }
+    return *this;
+}
+
+Player Player::resetScore(){
+    this->score = 0;
+    return *this;
+}
+int Player::getScore(){
+    return this->score;
+}
+Player Player::addScore(){
+    this->score++;
     return *this;
 }

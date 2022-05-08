@@ -17,7 +17,7 @@ using namespace std;
 
 class Entity{
     protected:
-        Position position;
+        Position position; //Entity position is being calculated *2 in order to smooth the animation
         Position lastPosition;
         Angle angle;
         bool isAlive = true;

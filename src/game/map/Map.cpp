@@ -5,38 +5,39 @@ Map::Map(){
     width = 17;
     height = 19;
     fieldType n = NONE;
+    fieldType p = POINT;
+    fieldType s = PACMAN;
+    fieldType g = GHOST;
     fieldType w = WALL;
     map = { {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
-            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
-            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
-            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w)},
-            {Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n)},
-            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
-            {Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n)},
-            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w)},
-            {Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n)},
-            {Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(w),Field(n),Field(w),Field(w),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(w),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
-            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
-            {Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w),Field(w),Field(n),Field(w)},
-            {Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(n),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(s),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(g),Field(g),Field(g),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)}
         };
+    calculateScoreTarget();
 }
 
 Map::~Map(){
 
 }
 
-void Map::setField(int x, int y, Field field){
-
-}
-Field Map::getField(int x, int y){
-    return Field();
+Field Map::getField(Position position){
+    return map[position.getY()][position.getX()];
 }
 
 int Map::getWidth(){
@@ -58,4 +59,27 @@ ostream & Map::render(ostream & os){
 
 bool Map::wall(Position position){
     return map[position.getY()][position.getX()].wall();
+}
+
+void Map::calculateScoreTarget(){
+    scoreTarget = 0;
+    for (auto line : map){
+        for (auto field : line){
+            if (field.point()){
+                scoreTarget += 1;
+            }
+        }
+    }
+}
+
+int Map::getTotalScore(){
+    return this->scoreTarget;
+}
+
+bool Map::collect(Position position){
+    if (this->map[position.getY()][position.getX()].point()){
+        this->map[position.getY()][position.getX()] = NONE;
+        return true;
+    }
+    return false;
 }

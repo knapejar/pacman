@@ -16,7 +16,7 @@ Field Field::getField(){
     return Field();
 }
 
-void Field::setField(fieldType field){
+void Field::setFieldType(fieldType field){
     this->field = field;
 }
 
@@ -41,7 +41,7 @@ ostream & Field::render(ostream & os){
             os << "██";
             break;
         case POINT:
-            os << "()";
+            os << "  ";
             break;
     }
     return os;
@@ -49,4 +49,7 @@ ostream & Field::render(ostream & os){
 
 bool Field::wall(){
     return field == WALL;
+}
+bool Field::point(){
+    return field == POINT;
 }

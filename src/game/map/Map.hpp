@@ -14,14 +14,18 @@ class Map{
         vector<vector<Field>> map;
         int width;
         int height;
+        int scoreTarget;
 
     public:
         Map();
         ~Map();
-        void setField(int x, int y, Field field);
-        Field getField(int x, int y);
+        void setField(Position position, Field field);
+        Field getField(Position position);
         int getWidth();
         int getHeight();
         ostream & render(ostream & os);
         bool wall(Position position);
+        void calculateScoreTarget();
+        int getTotalScore();
+        bool collect(Position position);
 };

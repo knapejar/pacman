@@ -22,11 +22,16 @@ class Game{
         Player player;
         vector<Ghost> ghosts;
         int tickLength = 100;
+        WINDOW * window;
     public:
         Game();
         Game(string fileName);
         ~Game();
         void run();
+        void renderAll();
+        void renderHalfAll();
+        void hideAll();
+        void tickAll();
 
     
 };

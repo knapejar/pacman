@@ -21,9 +21,10 @@ class Field {
         Field(fieldType field);
         ~Field();
         Field getField();
-        void setField(fieldType field);
+        void setFieldType(fieldType field);
         istream & load(istream & is);
         ostream & save(ostream & os);
         ostream & render(ostream & os);
         bool wall();
+        bool point();
 };
