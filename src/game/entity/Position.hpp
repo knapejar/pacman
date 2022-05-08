@@ -20,4 +20,6 @@ class Position {
         Position move(Angle angle, int distance);
         Position operator+(Position position);
         Position operator-(Position position);
+        bool operator==(Position position);
+        bool operator!=(Position position);
 };

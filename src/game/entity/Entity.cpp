@@ -2,22 +2,18 @@
 
 Entity::Entity(){
     this->position = Position(0, 0);
+    this->lastPosition = this->position;
     this->angle = Angle(0);
     this->isAlive = true;
-    this->name = "Entity";
-    this->saveName = "?";
-    this->renderName = "<>";
     this->color = COLOR_WHITE;
     this->map = NULL;
 }
 
 Entity::Entity(Position position, Angle angle){
     this->position = position;
+    this->lastPosition = this->position;
     this->angle = angle;
     this->isAlive = true;
-    this->name = "Entity";
-    this->saveName = "?";
-    this->renderName = "<>";
     this->color = COLOR_WHITE;
     this->map = NULL;
 }
@@ -36,6 +32,7 @@ Position Entity::getPosition(){
 }
 Entity Entity::setPosition(Position position){
     this->position = position;
+    this->lastPosition = this->position;
     return *this;
 }
 Angle Entity::getAngle(){
@@ -46,23 +43,41 @@ Entity Entity::setAngle(Angle angle){
     return *this;
 }
 
-Entity Entity::tick(){
-    Position nextPosition = this->position;
-    nextPosition.move(this->angle, 1);
-    if (!map->wall(nextPosition)){
-        this->position = nextPosition;
-    }
-    return *this;
-}
-
 Entity Entity::hide(WINDOW *window){
     mvwprintw(window, position.getY(), position.getX()*2, "  ");
+    mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "  ");
     return *this;
 }
 
 Entity Entity::render(WINDOW *window){
     init_pair(1, this->color, COLOR_BLACK);
     wattron(window, COLOR_PAIR(1));
-    mvwprintw(window, position.getY(), position.getX()*2, "██");
+    mvwprintw(window, position.getY(), position.getX()*2, renderName.c_str());
+    return *this;
+}
+
+Entity Entity::renderHalf(WINDOW *window){
+    if (position == lastPosition){
+        render(window);
+        return *this;
+    }
+    init_pair(1, this->color, COLOR_BLACK);
+    wattron(window, COLOR_PAIR(1));
+    if (position.getX() == lastPosition.getX() and position.getY() < lastPosition.getY()){
+        mvwprintw(window, position.getY(), position.getX()*2, "▄▄");
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "▀▀");
+    } else if (position.getX() == lastPosition.getX() and position.getY() > lastPosition.getY()){
+        mvwprintw(window, position.getY(), position.getX()*2, "▀▀");
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "▄▄");
+    } else if (position.getY() == lastPosition.getY() and position.getX() < lastPosition.getX()){
+        mvwprintw(window, position.getY(), position.getX()*2 + 1, "██");
+    } else if (position.getY() == lastPosition.getY() and position.getX() > lastPosition.getX()){
+        mvwprintw(window, position.getY(), position.getX()*2 - 1, "██");
+    }
+    return *this;
+}
+
+Entity Entity::tick(){
+    this->lastPosition = this->position;
     return *this;
 }

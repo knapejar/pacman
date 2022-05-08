@@ -18,11 +18,14 @@ using namespace std;
 class Entity{
     protected:
         Position position;
+        Position lastPosition;
         Angle angle;
         bool isAlive = true;
-        string name;
+        string name = "Entity";
         string saveName = "?";
-        string renderName = "<>";
+        string renderName = "██";
+        string renderNameLower = "▄▄";
+        string renderNameUpper = "▀▀";
         int color = COLOR_WHITE;
         Map * map;
     public:
@@ -37,4 +40,5 @@ class Entity{
         Entity tick();
         Entity hide(WINDOW *window);
         Entity render(WINDOW *window);
+        Entity renderHalf(WINDOW *window);
 };

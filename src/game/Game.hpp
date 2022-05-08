@@ -21,6 +21,7 @@ class Game{
         Map map;
         Player player;
         vector<Ghost> ghosts;
+        int tickLength = 100;
     public:
         Game();
         Game(string fileName);

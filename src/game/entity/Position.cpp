@@ -66,3 +66,9 @@ Position Position::operator-(Position position){
     this->y -= position.getY();
     return *this;
 }
+bool Position::operator==(Position position){
+    return this->x == position.getX() && this->y == position.getY();
+}
+bool Position::operator!=(Position position){
+    return this->x != position.getX() || this->y != position.getY();
+}

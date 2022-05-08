@@ -7,14 +7,14 @@ Player::Player():Entity(){
     this->color = COLOR_YELLOW;
 }
 Player::Player(Position position, Angle angle):Entity(position, angle){
-
+    targetAngle = angle;
 }
 Player::~Player(){
-
+    
 }
 
 Player Player::keyboardInput(int input){
-    switch(input) {
+    switch(input){
         case KEY_UP:
             setAngle(UP);
             break;
@@ -28,5 +28,15 @@ Player Player::keyboardInput(int input){
             setAngle(RIGHT);
             break;
     };
+    return *this;
+}
+
+Player Player::tick(){ //Overrided function to move the player
+    this->lastPosition = this->position;
+    Position nextPosition = this->position;
+    nextPosition.move(this->angle, 1);
+    if (!map->wall(nextPosition)){
+        this->position = nextPosition;
+    }
     return *this;
 }

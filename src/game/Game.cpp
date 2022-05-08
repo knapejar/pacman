@@ -3,7 +3,7 @@
 Game::Game(){
     this->map = Map();
     player.importMap(&map);
-    player.setPosition(Position(8, 8));
+    player.setPosition(Position(8, 7));
 }
 
 Game::Game(string fileName){
@@ -13,6 +13,18 @@ Game::Game(string fileName){
 
 Game::~Game(){
     //To be implemented
+}
+
+int readOneChar(WINDOW * window){
+    int tmpch;
+    int ch = -1;
+    for (int i = 0; i < 10; i++){ //Flush the buffer
+        tmpch = wgetch(window);
+        if (tmpch != -1){
+            ch = tmpch;
+        }
+    }
+    return ch;
 }
 
 void Game::run(){
@@ -42,28 +54,29 @@ void Game::run(){
     //wattron(window, COLOR_PAIR(1));
     //mvwprintw(window, 2, 2, "▀▀");
     keypad(window, TRUE ); // enable keyboard input for the window.
-    int ch, tmpch;
+    int ch;
 
-    while((ch = wgetch(window)) != 27){
-        for (int i = 0; i < 10; i++){ //Flush the buffer
-            tmpch = wgetch(window);
-            if (tmpch != -1){
-                ch = tmpch;
-            }
-        }
+    while((ch = readOneChar(window)) != 27){
         
         player.keyboardInput(ch);
         player.hide(window);
         player.tick();
-        player.render(window);
-        
+        player.hide(window);
+        player.renderHalf(window);
+        wrefresh(window);
+        napms(tickLength);
 
+        ch = readOneChar(window);
+        player.keyboardInput(ch);
+
+        player.hide(window);
+        player.render(window);
 
         //mvwaddstr(window, 2, 2, "Hello World!");
         string str = to_string(ch);
         mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
-        napms(200);
+        napms(tickLength);
         c++;
     }
 }
