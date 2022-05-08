@@ -1,5 +1,9 @@
 #pragma once
 
+#include <ncurses.h>
+
+#include "../map/Map.hpp"
+
 #include "Angle.hpp"
 #include "Position.hpp"
 
@@ -12,20 +16,25 @@ using namespace std;
         
 
 class Entity{
-    private:
+    protected:
         Position position;
         Angle angle;
         bool isAlive = true;
         string name;
         string saveName = "?";
         string renderName = "<>";
+        int color = COLOR_WHITE;
+        Map * map;
     public:
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
+        Entity importMap(Map * map);
         Position getPosition();
         Entity setPosition(Position position);
         Angle getAngle();
         Entity setAngle(Angle angle);
         Entity tick();
+        Entity hide(WINDOW *window);
+        Entity render(WINDOW *window);
 };

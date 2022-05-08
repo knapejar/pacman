@@ -11,4 +11,5 @@ class Player : public Entity{
         Player();
         Player(Position position, Angle angle);
         ~Player();
+        Player keyboardInput(int input);
 };

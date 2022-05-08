@@ -1,0 +1,7 @@
+V mojí semestrální práci využívám polymorfismu v případě pohybujících se entit - hráči, duchové.
+
+Mateřskou třídou je třída src/game/entity/Entity.hpp, která se stará o uchovávání pozice, úhlu, názvu, renderování a ukládání.
+Jejímy potomky jsou poté všichni duchové a hráči.
+Třída hráče (src/game/entity/Player.hpp) je potomkem třídy Entity.
+Třída duchové (src/game/entity/Ghost.hpp) je také potomkem třídy Entity.
+Všichni duchové budou dědit z třídy Ghost. Budou disponovat vlastním navigačním algoritmem.

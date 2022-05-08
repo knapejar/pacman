@@ -7,10 +7,12 @@
 #include "entity/Player.hpp"
 #include "entity/Ghost.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+#include <memory>
 
 using namespace std;
 

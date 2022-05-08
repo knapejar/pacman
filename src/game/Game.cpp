@@ -1,8 +1,9 @@
 #include "Game.hpp"
 
 Game::Game(){
-    //this->map = Map();
-    //To be implemented
+    this->map = Map();
+    player.importMap(&map);
+    player.setPosition(Position(8, 8));
 }
 
 Game::Game(string fileName){
@@ -14,31 +15,19 @@ Game::~Game(){
     //To be implemented
 }
 
-int kbhit(void)
-{
-    int ch = getch();
-
-    if (ch != ERR) {
-        ungetch(ch);
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
 void Game::run(){
     initscr();
     start_color();
     curs_set(0);
-    //cbreak();
-    //noecho();
-    //nodelay(stdscr, TRUE);
     WINDOW *window;
     int starty = (LINES - map.getHeight()) / 2;
 	int startx = (COLS - (2 * map.getWidth())) / 2;
 
     window = newwin(map.getHeight(), (2 * map.getWidth()), starty, startx);
-    
+    //cbreak();
+    noecho();
+    wtimeout(window, 0);
+
     wrefresh(window);
 
     int c = 0;
@@ -53,34 +42,20 @@ void Game::run(){
     //wattron(window, COLOR_PAIR(1));
     //mvwprintw(window, 2, 2, "▀▀");
     keypad(window, TRUE ); // enable keyboard input for the window.
-    int ch;
+    int ch, tmpch;
 
-    player.setPosition(Position(11, 10));
-
-    while((ch = wgetch(window)) != 10){
-        switch( ch ) {
-            case KEY_UP:
-                player.setAngle(UP);
-                break;
-            case KEY_DOWN:
-                player.setAngle(DOWN);
-                break;
-            case KEY_LEFT:
-                player.setAngle(LEFT);
-                break;
-            case KEY_RIGHT:
-                player.setAngle(RIGHT);
-                break;
-        };
-
-        Position pos = player.getPosition().move(player.getAngle(), 1);
-        if(!map.wall(pos)){
-            mvwprintw(window, player.getPosition().getY(), player.getPosition().getX()*2, "  ");
-            player.tick();
-            init_pair(1, COLOR_YELLOW, COLOR_BLACK);
-            wattron(window, COLOR_PAIR(1));
-            mvwprintw(window, pos.getY(), pos.getX()*2, "██");
+    while((ch = wgetch(window)) != 27){
+        for (int i = 0; i < 10; i++){ //Flush the buffer
+            tmpch = wgetch(window);
+            if (tmpch != -1){
+                ch = tmpch;
+            }
         }
+        
+        player.keyboardInput(ch);
+        player.hide(window);
+        player.tick();
+        player.render(window);
         
 
 
@@ -88,7 +63,7 @@ void Game::run(){
         string str = to_string(ch);
         mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
-        napms(100);
+        napms(200);
         c++;
     }
 }

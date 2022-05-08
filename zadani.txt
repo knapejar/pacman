@@ -1,3 +1,20 @@
+# Pacman
+
+-- Mé upřesnění zadání:
+
+Jak spustit
+
+Start: make run - výsledný soubor: ./pacman
+Dokumentace: make doc
+
+
+
+
+
+
+
+-- Originální zadání z progtestu:
+
 Pacman
 Termín odevzdání:	12.06.2022 23:59:59	Zbývá 39 dní, 10h, 2m a 17s
 Hodnocení:	0.0000
