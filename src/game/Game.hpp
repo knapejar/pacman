@@ -19,6 +19,7 @@ using namespace std;
 class Game{
     private:
         Map map;
+        Map entityMap;
         Player player;
         vector<Ghost> ghosts;
         int tickLength = 100;

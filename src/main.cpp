@@ -31,6 +31,7 @@ int main(){
     ScreenState current = ScreenState::MENU;
     
     while (current != ScreenState::EXIT){
+        printf("Hello, World!\n");
         switch (current){
             case ScreenState::MENU:
                 current = menu.show();

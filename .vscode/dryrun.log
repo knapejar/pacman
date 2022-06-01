@@ -1,0 +1,10 @@
+make run --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/Jarda/FIT_PA2/knapejar'
+echo "\033[1;36mcompiling with flags \033[0m-std=c++17 -Wall -pedantic -Wno-long-long -O0 -ggdb -lncursesw"
+g++ -std=c++17 -Wall -pedantic -Wno-long-long -O0 -ggdb src/main.o src/screen/Pause.o src/screen/Settings.o src/screen/SelectFileName.o src/screen/Screen.o src/screen/Menu.o src/game/Game.o src/game/GameState.o src/game/entity/Ghost.o src/game/entity/Player.o src/game/entity/Angle.o src/game/entity/Entity.o src/game/entity/Position.o src/game/map/PathFinder.o src/game/map/Field.o src/game/map/Map.o -o pacman -lncursesw
+echo "\033[1;32mCOMPILE OK\033[0m"
+echo "\033[1;36mstarting executable\033[0m"
+./pacman
+echo "\033[1;32m\033[7mRUN OK\033[0m"
+make: Leaving directory '/mnt/c/Users/Jarda/FIT_PA2/knapejar'
+ 

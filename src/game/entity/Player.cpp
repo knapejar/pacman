@@ -4,7 +4,7 @@ Player::Player():Entity(){
     this->name = "Player";
     this->saveName = "P";
     this->renderName = "<>";
-    this->color = COLOR_YELLOW;
+    this->color = 2; //YELLOW
 }
 Player::Player(Position position, Angle angle):Entity(position, angle){
     targetAngle = angle;
@@ -26,6 +26,20 @@ Player Player::keyboardInput(int input){
             break;
         case KEY_RIGHT:
             setAngle(RIGHT);
+            break;
+        case 'w':
+            setAngle(UP);
+            break;
+        case 's':
+            setAngle(DOWN);
+            break;
+        case 'a':
+            setAngle(LEFT);
+            break;
+        case 'd':
+            setAngle(RIGHT);
+            break;
+        default:
             break;
     };
     return *this;

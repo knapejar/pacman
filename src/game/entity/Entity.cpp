@@ -5,7 +5,7 @@ Entity::Entity(){
     this->lastPosition = this->position;
     this->angle = Angle(0);
     this->isAlive = true;
-    this->color = COLOR_WHITE;
+    this->color = 1; //WHITE
     this->map = NULL;
 }
 
@@ -22,8 +22,9 @@ Entity::~Entity(){
 
 }
 
-Entity Entity::importMap(Map * map){
+Entity Entity::importMaps(Map * map, Map * entityMap){
     this->map = map;
+    this->entityMap = entityMap;
     return *this;
 }
 
@@ -50,8 +51,7 @@ Entity Entity::hide(WINDOW *window){
 }
 
 Entity Entity::render(WINDOW *window){
-    init_pair(1, this->color, COLOR_BLACK);
-    wattron(window, COLOR_PAIR(1));
+    wattron(window, COLOR_PAIR(color));
     mvwprintw(window, position.getY(), position.getX()*2, "██");
     return *this;
 }
@@ -61,8 +61,7 @@ Entity Entity::renderHalf(WINDOW *window){
         render(window);
         return *this;
     }
-    init_pair(1, this->color, COLOR_BLACK);
-    wattron(window, COLOR_PAIR(1));
+    wattron(window, COLOR_PAIR(color));
     if (position.getX() == lastPosition.getX() and position.getY() < lastPosition.getY()){
         mvwprintw(window, position.getY(), position.getX()*2, "▄▄");
         mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "▀▀");

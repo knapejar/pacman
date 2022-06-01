@@ -26,13 +26,14 @@ class Entity{
         string renderName = "██";
         string renderNameLower = "▄▄";
         string renderNameUpper = "▀▀";
-        int color = COLOR_WHITE;
+        int color = 1; //WHITE
         Map * map;
+        Map * entityMap;
     public:
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
-        Entity importMap(Map * map);
+        Entity importMaps(Map * map, Map * entityMap);
         Position getPosition();
         Entity setPosition(Position position);
         Angle getAngle();
