@@ -8,6 +8,7 @@
 #include "Position.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <utility>

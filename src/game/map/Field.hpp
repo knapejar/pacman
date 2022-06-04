@@ -9,6 +9,8 @@ enum fieldType {
     NONE,
     WALL,
     POINT,
+    CHERRY,
+    BONUS,
     PACMAN,
     GHOST,
     BLINKY,

@@ -44,8 +44,8 @@ Map::Map(std::string filename){
     file >> width;
     file >> height;
     //Check for valid width and height
-    if (width < 1 || height < 1 || file.fail()){
-        throw std::runtime_error("Invalid width or height");
+    if (width < 9 || height < 9 || file.fail()){
+        throw std::runtime_error("Invalid width or height - minimum is w:9, h:9");
     }
     //Load map
     map.resize(height);

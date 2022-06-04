@@ -33,6 +33,12 @@ istream & Field::load(istream & is){
         case '.':
             this->field = POINT;
             break;
+        case 'o':
+            this->field = CHERRY;
+            break;
+        case '*':
+            this->field = BONUS;
+            break;
         case 'P':
             this->field = PACMAN;
             break;
@@ -77,6 +83,12 @@ ostream & Field::render(ostream & os){
         case POINT:
             os << "<>";
             break;
+        case CHERRY:
+            os << "oO";
+            break;
+        case BONUS:
+            os << "<3";
+            break;
     }
     return os;
 }
@@ -91,6 +103,14 @@ char Field::toChar(){
     switch (field){
         case NONE:
             return ' ';
+        case WALL:
+            return '#';
+        case POINT:
+            return '.';
+        case CHERRY:
+            return 'o';
+        case BONUS:
+            return '*';
         case PACMAN:
             return 'P';
         case GHOST:
@@ -103,10 +123,6 @@ char Field::toChar(){
             return 'I';
         case PINKY:
             return 'G';
-        case WALL:
-            return '#';
-        case POINT:
-            return '.';
         default:
             return ' ';
     }

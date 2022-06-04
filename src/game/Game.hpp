@@ -14,10 +14,16 @@
 #include <vector>
 #include <memory>
 
-
+enum GameState{
+    PLAYING,
+    PAUSED,
+    GAMEOVER,
+    WON
+};
 
 class Game{
     private:
+        GameState gameState = PLAYING;
         Map map;
         EntityManager entityManager;
         
@@ -30,5 +36,6 @@ class Game{
         ~Game();
         void renderScoreBoard();
         void run();
-    
+
+        GameState getGameState();
 };

@@ -74,8 +74,7 @@ void Game::run(){
     entityManager.importWindow(window);
     renderScoreBoard();
 
-    int c = 0;
-    int ch;    
+    int ch; //Temporary character loaded from keyboard
     keypad(window, TRUE );
     
     map.calculateScoreTarget();
@@ -83,12 +82,11 @@ void Game::run(){
     entityManager.render();
     wrefresh(window);
 
-    bool running = true;
-
-    while(running){
+    this->gameState = GameState::PLAYING;
+    while(this->gameState == GameState::PLAYING){
         while ((ch = readOneChar(window)) && ch != -1){
             if (ch == 'q'){
-                running = false;
+                this->gameState = GameState::PAUSED;
             } else if (ch == KEY_RESIZE){
                 //Resize the window
                 
@@ -108,15 +106,22 @@ void Game::run(){
             }
             wtimeout(window, 0);
         }
-        if (not running){
+        if (this->gameState != GameState::PLAYING){
             break;
         }
 
         //Animation stage in the tick <- should be stored into renderer TODO
         entityManager.tick().hide().renderHalf();
-        
+
+        //Check if the player has won
+        if (entityManager.player.getScore() >= map.getTotalScore()){
+            this->gameState = GameState::WON;
+            break;
+        }
+
+        //Check if the player has lost
         if (entityManager.gameEnded()){
-            running = false;
+            this->gameState = GameState::GAMEOVER;
         }
 
         wrefresh(window);
@@ -124,24 +129,25 @@ void Game::run(){
 
         //Second stage in the tick
         entityManager.hide().render();
-
-
-        //mvwaddstr(window, 2, 2, "Hello World!");
-        //string str = to_string(entityManager.player.getScore()); //map.maxScore()
-        //mvwaddstr(window, map.getHeight(), 0, "Score:   ");
-        //mvwaddstr(window, map.getHeight(), 7, str.c_str());
-        
-        
         renderScoreBoard();
         wrefresh(window);
         napms(tickLength);
-        c++;
     }
     cout << "EXIT\n";
     //Delete window
     wtimeout(window, 1);
+    if (gameState == GameState::WON){
+    mvwaddstr(window, 0, map.getWidth() - 5, "You WON!");
+    } else if (gameState == GameState::GAMEOVER){
     mvwaddstr(window, 0, map.getWidth() - 5, "Game Over!");
+    } else {
+        mvwaddstr(window, 0, map.getWidth() - 5, "Paused");
+    }
     wrefresh(window);
     delwin(window);
     endwin();
+}
+
+GameState Game::getGameState(){
+    return gameState;
 }

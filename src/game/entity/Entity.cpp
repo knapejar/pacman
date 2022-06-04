@@ -48,16 +48,12 @@ Entity Entity::setAngle(Angle angle){
 
 Entity Entity::hide(WINDOW *window){
     wattron(window, COLOR_PAIR(1));
-    if (map->point(position)){
-        mvwprintw(window, position.getY(), position.getX()*2, "<>");
-    } else {
-        mvwprintw(window, position.getY(), position.getX()*2, "  ");    
-    }
-    if (map->point(lastPosition)){
-        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "<>");
-    } else {
-        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "  ");    
-    }
+    ostringstream ss;
+    map->getField(this->position).render(ss);
+    mvwprintw(window, position.getY(), position.getX()*2, ss.str().c_str());
+    ss.str("");
+    map->getField(this->lastPosition).render(ss);
+    mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, ss.str().c_str());
     return *this;
 }
 

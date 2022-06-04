@@ -1,10 +1,7 @@
 - SelfTest utitlity
 - Menu
-- Dokumentace
+- Komentáře do kódu
 
 - Přidat bonus - život navíc
 - Přidat třešničku na žraní duchů
-- Přidat obtížnosti duchů
-
-Critical:
-- Podmínka výhry
+- Přidat obtížnosti duchů ze souboru
