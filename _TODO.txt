@@ -1,5 +1,10 @@
 - SelfTest utitlity
-- Nepropojené portály dělají segfault
-- Podmínka výhry
 - Menu
 - Dokumentace
+
+- Přidat bonus - život navíc
+- Přidat třešničku na žraní duchů
+- Přidat obtížnosti duchů
+
+Critical:
+- Podmínka výhry

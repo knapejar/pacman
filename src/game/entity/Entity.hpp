@@ -40,6 +40,7 @@ class Entity{
         Angle getAngle();
         Entity setAngle(Angle angle);
         void teleportCheck();
+        void teleportCheck(Position & position);
         Entity tick();
         Entity hide(WINDOW *window);
         Entity render(WINDOW *window);

@@ -87,19 +87,23 @@ Entity Entity::renderHalf(WINDOW *window){
     return *this;
 }
 
+void Entity::teleportCheck(Position & position){
+    if (position.getX() < 0){
+        position = Position(map->getWidth() - 1, position.getY());
+    }
+    if (position.getX() > map->getWidth() - 1){
+        position = Position(0, position.getY());
+    }
+    if (position.getY() < 0){
+        position = Position(position.getX(), map->getHeight() - 1);
+    }
+    if (position.getY() > map->getHeight() - 1){
+        position = Position(position.getX(), 0);
+    }
+}
+
 void Entity::teleportCheck(){
-    if (this->position.getX() < 0){
-        this->position = Position(map->getWidth() - 1, this->position.getY());
-    }
-    if (this->position.getX() > map->getWidth() - 1){
-        this->position = Position(0, this->position.getY());
-    }
-    if (this->position.getY() < 0){
-        this->position = Position(this->position.getX(), map->getHeight() - 1);
-    }
-    if (this->position.getY() > map->getHeight() - 1){
-        this->position = Position(this->position.getX(), 0);
-    }
+    teleportCheck(this->position);
 }
 
 Entity Entity::tick(){

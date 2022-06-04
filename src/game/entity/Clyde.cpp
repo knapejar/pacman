@@ -28,6 +28,7 @@ void Clyde::tick(int tick){
     for (int i = 0; i < 4; i++){
         nextPosition = this->position;
         nextPosition.move(this->angle, 1);
+        teleportCheck(nextPosition);
         //Collision
         if (!map->wall(nextPosition)){
             break;

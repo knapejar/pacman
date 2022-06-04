@@ -60,10 +60,10 @@ Player Player::tick(){ //Overrided function to move the player
     this->lastPosition = this->position;
     Position nextPosition = this->position;
     nextPosition.move(this->angle, 1);
+    teleportCheck(nextPosition);
     if (!map->wall(nextPosition)){
         this->position = nextPosition;
     }
-    teleportCheck();
     if (map->collect(this->position)){
         this->score += 1;
     }
