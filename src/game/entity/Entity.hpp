@@ -26,18 +26,18 @@ class Entity{
         string renderName = "██";
         string renderNameLower = "▄▄";
         string renderNameUpper = "▀▀";
-        int color = 1; //WHITE
         Map * map;
-        Map * entityMap;
     public:
+        int color = 1; //WHITE
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
-        Entity importMaps(Map * map, Map * entityMap);
+        Entity importMap(Map * map);
         Position getPosition();
         Entity setPosition(Position position);
         Angle getAngle();
         Entity setAngle(Angle angle);
+        void teleportCheck();
         Entity tick();
         Entity hide(WINDOW *window);
         Entity render(WINDOW *window);

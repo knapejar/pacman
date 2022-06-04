@@ -34,5 +34,9 @@
       "binaryPath": "/mnt/c/Users/Jarda/FIT_PA2/knapejar/pacman",
       "binaryArgs": []
     }
-  ]
+  ],
+  "files.associations": {
+    "memory": "cpp",
+    "map": "cpp"
+  }
 }

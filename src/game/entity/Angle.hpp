@@ -17,4 +17,8 @@ class Angle{
         Angle setAngle(Angle angle);
         Angle rotate(int angle);
         Angle rotate(Angle angle);
+        Angle operator+(Angle angle);
+        Angle operator-(Angle angle);
+        Angle operator+=(Angle angle);
+        Angle operator-=(Angle angle);
 };

@@ -55,12 +55,7 @@ Player Player::tick(){ //Overrided function to move the player
     if (map->collect(this->position)){
         this->score += 1;
     }
-    if (this->position.getX() < 0){
-        this->position = Position(map->getWidth() - 1, this->position.getY());
-    }
-    if (this->position.getX() > map->getWidth() - 1){
-        this->position = Position(0, this->position.getY());
-    }
+    teleportCheck();
     return *this;
 }
 

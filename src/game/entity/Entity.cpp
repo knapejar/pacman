@@ -5,7 +5,6 @@ Entity::Entity(){
     this->lastPosition = this->position;
     this->angle = Angle(0);
     this->isAlive = true;
-    this->color = 1; //WHITE
     this->map = NULL;
 }
 
@@ -14,7 +13,6 @@ Entity::Entity(Position position, Angle angle){
     this->lastPosition = this->position;
     this->angle = angle;
     this->isAlive = true;
-    this->color = COLOR_WHITE;
     this->map = NULL;
 }
 
@@ -22,9 +20,8 @@ Entity::~Entity(){
 
 }
 
-Entity Entity::importMaps(Map * map, Map * entityMap){
+Entity Entity::importMap(Map * map){
     this->map = map;
-    this->entityMap = entityMap;
     return *this;
 }
 
@@ -45,8 +42,17 @@ Entity Entity::setAngle(Angle angle){
 }
 
 Entity Entity::hide(WINDOW *window){
-    mvwprintw(window, position.getY(), position.getX()*2, "  ");
-    mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "  ");
+    wattron(window, COLOR_PAIR(1));
+    if (map->point(position)){
+        mvwprintw(window, position.getY(), position.getX()*2, "<>");
+    } else {
+        mvwprintw(window, position.getY(), position.getX()*2, "  ");    
+    }
+    if (map->point(lastPosition)){
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "<>");
+    } else {
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "  ");    
+    }
     return *this;
 }
 
@@ -74,6 +80,21 @@ Entity Entity::renderHalf(WINDOW *window){
         mvwprintw(window, position.getY(), position.getX()*2 - 1, "██");
     }
     return *this;
+}
+
+void Entity::teleportCheck(){
+    if (this->position.getX() < 0){
+        this->position = Position(map->getWidth() - 1, this->position.getY());
+    }
+    if (this->position.getX() > map->getWidth() - 1){
+        this->position = Position(0, this->position.getY());
+    }
+    if (this->position.getY() < 0){
+        this->position = Position(this->position.getX(), map->getHeight() - 1);
+    }
+    if (this->position.getY() > map->getHeight() - 1){
+        this->position = Position(this->position.getX(), 0);
+    }
 }
 
 Entity Entity::tick(){

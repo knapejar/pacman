@@ -1,9 +1,10 @@
 #include "Game.hpp"
 
+using namespace std;
+
 Game::Game(){
     this->map = Map();
-    player.importMaps(&map, &entityMap);
-    player.setPosition(Position(8, 7));
+    entityManager.importMap(&map);
 }
 
 Game::Game(string fileName){
@@ -15,33 +16,7 @@ Game::~Game(){
     //To be implemented
 }
 
-void Game::renderAll(){
-    player.render(window);
-    for (auto ghost : ghosts){
-        ghost.render(window);
-    }
-}
 
-void Game::renderHalfAll(){
-    player.renderHalf(window);
-    for (auto ghost : ghosts){
-        ghost.renderHalf(window);
-    }
-}
-
-void Game::tickAll(){
-    player.tick();
-    for (auto ghost : ghosts){
-        ghost.tick();
-    }
-}
-
-void Game::hideAll(){
-    player.hide(window);
-    for (auto ghost : ghosts){
-        ghost.hide(window);
-    }
-}
 
 int readOneChar(WINDOW * window){
     int tmpch;
@@ -72,6 +47,9 @@ void Game::run(){
     noecho();
     wtimeout(window, 0);
 
+    entityManager.importWindow(window);
+    entityManager.importMap(&map);
+
     int c = 0;
     int ch;    
     keypad(window, TRUE );
@@ -79,6 +57,7 @@ void Game::run(){
     init_pair(2, 7, 8);
     init_pair(1, 7, COLOR_BLACK);
     init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(3, COLOR_RED, COLOR_BLACK);
     wattron(window, COLOR_PAIR(1));
     
     renderMap(map, window);
@@ -105,7 +84,7 @@ void Game::run(){
                 renderMap(map, window);
                 
             } else {
-                player.keyboardInput(ch);
+                entityManager.player.keyboardInput(ch);
             }
         }
         if (not running){
@@ -113,18 +92,18 @@ void Game::run(){
         }
 
         //Animation stage in the tick <- should be stored into renderer TODO
-        hideAll();
-        tickAll();
-        renderHalfAll();
+        entityManager.hide();
+        entityManager.tick();
+        entityManager.renderHalf();
         wrefresh(window);
         napms(tickLength);
 
         //Second stage in the tick
-        hideAll();
-        renderAll();
+        entityManager.hide();
+        entityManager.render();
 
         //mvwaddstr(window, 2, 2, "Hello World!");
-        string str = to_string(player.getScore()); //map.maxScore()
+        string str = to_string(entityManager.player.getScore()); //map.maxScore()
         mvwaddstr(window, 0, 0, str.c_str());
         wrefresh(window);
         napms(tickLength);

@@ -24,3 +24,17 @@ Angle Angle::rotate(int angle){
     this->angle = (this->angle + angle) % 4;
     return *this;
 }
+Angle Angle::operator+(Angle angle){
+    return Angle((this->angle + angle.getAngle())%4);
+}
+Angle Angle::operator-(Angle angle){
+    return Angle((this->angle - angle.getAngle())%4);
+}
+Angle Angle::operator+=(Angle angle){
+    this->angle = (this->angle + angle.getAngle()) % 4;
+    return *this;
+}
+Angle Angle::operator-=(Angle angle){
+    this->angle = (this->angle - angle.getAngle()) % 4;
+    return *this;
+}

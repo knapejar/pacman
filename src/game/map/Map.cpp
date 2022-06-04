@@ -60,6 +60,9 @@ ostream & Map::render(ostream & os){
 bool Map::wall(Position position){
     return map[position.getY()][position.getX()].wall();
 }
+bool Map::point(Position position){
+    return map[position.getY()][position.getX()].point();
+}
 
 void Map::calculateScoreTarget(){
     scoreTarget = 0;

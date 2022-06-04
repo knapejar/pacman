@@ -25,6 +25,7 @@ class Map{
         int getHeight();
         ostream & render(ostream & os);
         bool wall(Position position);
+        bool point(Position position);
         void calculateScoreTarget();
         int getTotalScore();
         bool collect(Position position);

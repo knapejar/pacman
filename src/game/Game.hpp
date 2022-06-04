@@ -4,8 +4,8 @@
 
 #include "map/Map.hpp"
 #include "entity/Angle.hpp"
-#include "entity/Player.hpp"
-#include "entity/Ghost.hpp"
+
+#include "entity/EntityManager.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -14,14 +14,13 @@
 #include <vector>
 #include <memory>
 
-using namespace std;
+
 
 class Game{
     private:
         Map map;
-        Map entityMap;
-        Player player;
-        vector<Ghost> ghosts;
+        EntityManager entityManager;
+        
         int tickLength = 100;
         WINDOW * window;
     public:
@@ -29,10 +28,5 @@ class Game{
         Game(string fileName);
         ~Game();
         void run();
-        void renderAll();
-        void renderHalfAll();
-        void hideAll();
-        void tickAll();
-
     
 };
