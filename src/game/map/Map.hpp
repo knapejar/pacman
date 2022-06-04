@@ -31,4 +31,6 @@ class Map{
         void calculateScoreTarget();
         int getTotalScore();
         bool collect(Position position);
+        bool pickUpCherry(Position position);
+        bool pickUpBonus(Position position);
 };

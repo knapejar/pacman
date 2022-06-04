@@ -115,3 +115,17 @@ bool Map::collect(Position position){
     }
     return false;
 }
+bool Map::pickUpCherry(Position position){
+    if (this->map[position.getY()][position.getX()].toChar() == 'o'){
+        this->map[position.getY()][position.getX()] = NONE;
+        return true;
+    }
+    return false;
+}
+bool Map::pickUpBonus(Position position){
+    if (this->map[position.getY()][position.getX()].toChar() == '*'){
+        this->map[position.getY()][position.getX()] = NONE;
+        return true;
+    }
+    return false;
+}

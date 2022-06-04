@@ -67,6 +67,12 @@ Player Player::tick(){ //Overrided function to move the player
     if (map->collect(this->position)){
         this->score += 1;
     }
+    if (map->pickUpBonus(this->position)){
+        this->lives += 1;
+    }
+    if (map->pickUpCherry(this->position)){
+        this->lives += 1;
+    }
     return *this;
 }
 

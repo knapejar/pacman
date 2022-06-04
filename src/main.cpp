@@ -22,7 +22,7 @@ int main(){
     setlocale(LC_ALL, "");
 
     Menu menu = Menu();
-    Game game = Game("examples/small.pacman");
+    Game game = Game("examples/openSpace.pacman");
 
     //Temporary turn on the game wight after the start
     

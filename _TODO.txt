@@ -1,7 +1,16 @@
+Před odevzdáním:
 - SelfTest utitlity
 - Menu
 - Komentáře do kódu
 
-- Přidat bonus - život navíc
-- Přidat třešničku na žraní duchů
-- Přidat obtížnosti duchů ze souboru
+
+
+- Implementovat třešničku na žraní duchů
+- Načíst hodnotu ghost release timeout ze souboru
+- Smysuplné výpisky vedle duchů
+
+Mezní hodnoty:
+limitovat počet duchů
+limitovat počet spawnpointů
+podmínit alespoň jeden spawnpoint
+podmínit alespoň jeden bod
