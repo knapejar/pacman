@@ -3,7 +3,8 @@
 
 [PA2 Semestral work instructions](https://courses.fit.cvut.cz/BI-PA2/semestral.html)
 
-Readme to be done :)
+
+[FULL DOCUMENTATION ON GITLAB](https://gitlab.fit.cvut.cz/BI-PA2/B212/BI/knapejar/tree/master/docs/html)
 
 
 
