@@ -18,6 +18,9 @@ void Blinky::calculatePath(){
 }
 
 void Blinky::tick(int tick){
+    if (this->state == CAGED)
+        return;
+
     this->lastPosition = this->position;
     Position nextPosition = this->position;
     if (rand() % 10 + 1 > 5)

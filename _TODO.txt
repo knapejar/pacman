@@ -1,0 +1,5 @@
+- SelfTest utitlity
+- Nepropojené portály dělají segfault
+- Podmínka výhry
+- Menu
+- Dokumentace

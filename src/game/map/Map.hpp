@@ -4,6 +4,7 @@
 #include "../entity/Position.hpp"
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -18,6 +19,7 @@ class Map{
 
     public:
         Map();
+        Map(string fileName);
         ~Map();
         void setField(Position position, Field field);
         Field getField(Position position);

@@ -9,6 +9,7 @@ class Player : public Entity{
         string renderName = "XX";
         Angle targetAngle;
         int score = 0;
+        int lives = 3;
     public:
         Player();
         Player(Position position, Angle angle);
@@ -18,4 +19,6 @@ class Player : public Entity{
         Player resetScore();
         int getScore();
         Player addScore();
+        int getLives();
+        Player loseLife();
 };

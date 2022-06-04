@@ -5,9 +5,20 @@ Player::Player():Entity(){
     this->saveName = "P";
     this->renderName = "<>";
     this->color = 2; //YELLOW
+    this->angle = Angle(2);
+    this->targetAngle = Angle(2);
+    this->score = 0;
+    this->lives = 3;
 }
 Player::Player(Position position, Angle angle):Entity(position, angle){
+    this->name = "Player";
+    this->saveName = "P";
+    this->renderName = "<>";
+    this->color = 2; //YELLOW
+    this->angle = Angle(2);
     targetAngle = angle;
+    this->score = 0;
+    this->lives = 3;
 }
 Player::~Player(){
     
@@ -52,10 +63,10 @@ Player Player::tick(){ //Overrided function to move the player
     if (!map->wall(nextPosition)){
         this->position = nextPosition;
     }
+    teleportCheck();
     if (map->collect(this->position)){
         this->score += 1;
     }
-    teleportCheck();
     return *this;
 }
 
@@ -68,5 +79,12 @@ int Player::getScore(){
 }
 Player Player::addScore(){
     this->score++;
+    return *this;
+}
+int Player::getLives(){
+    return this->lives;
+}
+Player Player::loseLife(){
+    this->lives--;
     return *this;
 }

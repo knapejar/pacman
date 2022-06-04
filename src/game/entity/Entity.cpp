@@ -3,6 +3,7 @@
 Entity::Entity(){
     this->position = Position(0, 0);
     this->lastPosition = this->position;
+    this->spawnPosition = this->position;
     this->angle = Angle(0);
     this->isAlive = true;
     this->map = NULL;
@@ -11,6 +12,7 @@ Entity::Entity(){
 Entity::Entity(Position position, Angle angle){
     this->position = position;
     this->lastPosition = this->position;
+    this->spawnPosition = this->position;
     this->angle = angle;
     this->isAlive = true;
     this->map = NULL;
@@ -24,13 +26,16 @@ Entity Entity::importMap(Map * map){
     this->map = map;
     return *this;
 }
-
+string Entity::getName(){
+    return this->name;
+}
 Position Entity::getPosition(){
     return this->position;
 }
 Entity Entity::setPosition(Position position){
     this->position = position;
     this->lastPosition = this->position;
+    this->spawnPosition = this->position;
     return *this;
 }
 Angle Entity::getAngle(){
@@ -100,4 +105,9 @@ void Entity::teleportCheck(){
 Entity Entity::tick(){
     this->lastPosition = this->position;
     return *this;
+}
+
+void Entity::respawn(){
+    this->position = this->spawnPosition;
+    this->angle = Angle(2);
 }

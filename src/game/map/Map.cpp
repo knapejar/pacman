@@ -7,7 +7,10 @@ Map::Map(){
     fieldType n = NONE;
     fieldType p = POINT;
     fieldType s = PACMAN;
-    fieldType g = GHOST;
+    fieldType a = BLINKY;
+    fieldType b = CLYDE;
+    fieldType c = INKY;
+    fieldType d = PINKY;
     fieldType w = WALL;
     map = { {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
@@ -16,11 +19,11 @@ Map::Map(){
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
-            {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(s),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
-            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
-            {Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(g),Field(g),Field(g),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p)},
-            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
             {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(a),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(b),Field(c),Field(d),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p)},
+            {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
+            {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(s),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
@@ -29,6 +32,32 @@ Map::Map(){
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)}
         };
+    calculateScoreTarget();
+}
+
+Map::Map(std::string filename){
+    ifstream file(filename);
+    if (!file.is_open()){
+        throw std::runtime_error("Could not open file");
+    }
+    //First line is width and height
+    file >> width;
+    file >> height;
+    //Check for valid width and height
+    if (width < 1 || height < 1 || file.fail()){
+        throw std::runtime_error("Invalid width or height");
+    }
+    //Load map
+    map.resize(height);
+    for (int i = 0; i < height; i++){
+        map[i].resize(width);
+        for (int j = 0; j < width; j++){
+            map[i][j].load(file);
+            if (file.fail()){
+                throw std::runtime_error("Invalid map");
+            }
+        }
+    }
     calculateScoreTarget();
 }
 

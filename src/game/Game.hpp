@@ -23,10 +23,12 @@ class Game{
         
         int tickLength = 100;
         WINDOW * window;
+        int infoScreenSize = 3;
     public:
         Game();
         Game(string fileName);
         ~Game();
+        void renderScoreBoard();
         void run();
     
 };

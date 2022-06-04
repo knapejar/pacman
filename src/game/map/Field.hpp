@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -9,7 +10,11 @@ enum fieldType {
     WALL,
     POINT,
     PACMAN,
-    GHOST
+    GHOST,
+    BLINKY,
+    CLYDE,
+    INKY,
+    PINKY
 };
 
 class Field {
@@ -27,4 +32,5 @@ class Field {
         ostream & render(ostream & os);
         bool wall();
         bool point();
+        char toChar();
 };

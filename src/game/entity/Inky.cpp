@@ -1,23 +1,23 @@
-#include "Clyde.hpp"
+#include "Inky.hpp"
 
-Clyde::Clyde():Ghost(){
-    this->name = "Clyde";
+Inky::Inky():Ghost(){
+    this->name = "Inky";
     this->saveName = "B";
     this->renderName = "BB";
-    this->color = 4;
+    this->color = 6;
     this->angle = Angle(2);
 }
 //Copy consturctor
-Clyde::~Clyde(){
+Inky::~Inky(){
 
 }
 
-void Clyde::calculatePath(){
+void Inky::calculatePath(){
     //Calculate path
     //TODO
 }
 
-void Clyde::tick(int tick){
+void Inky::tick(int tick){
     if (this->state == CAGED)
         return;
 

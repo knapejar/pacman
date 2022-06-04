@@ -2,10 +2,10 @@
 
 #include "Ghost.hpp"
 
-class Clyde : public Ghost{
+class Pinky : public Ghost{
     public:
-        Clyde();
-        ~Clyde();
+        Pinky();
+        ~Pinky();
         void calculatePath();
         void tick(int tick);
 };

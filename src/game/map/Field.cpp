@@ -21,7 +21,37 @@ void Field::setFieldType(fieldType field){
 }
 
 istream & Field::load(istream & is){
-    //TODO apply the dictionary there
+    char c;
+    is >> c;
+    switch (c){
+        case '_':
+            this->field = NONE;
+            break;
+        case '#':
+            this->field = WALL;
+            break;
+        case '.':
+            this->field = POINT;
+            break;
+        case 'P':
+            this->field = PACMAN;
+            break;
+        case 'B':
+            this->field = BLINKY;
+            break;
+        case 'C':
+            this->field = CLYDE;
+            break;
+        case 'I':
+            this->field = INKY;
+            break;
+        case 'G':
+            this->field = PINKY;
+            break;
+        default:
+            throw std::runtime_error("Field::load: Unknown field type");
+            break;
+    }
     return is;
 }
 
@@ -35,6 +65,10 @@ ostream & Field::render(ostream & os){
         case NONE:
         case PACMAN:
         case GHOST:
+        case BLINKY:
+        case CLYDE:
+        case INKY:
+        case PINKY:
             os << "  ";
             break;
         case WALL:
@@ -52,4 +86,28 @@ bool Field::wall(){
 }
 bool Field::point(){
     return field == POINT;
+}
+char Field::toChar(){
+    switch (field){
+        case NONE:
+            return ' ';
+        case PACMAN:
+            return 'P';
+        case GHOST:
+            return ' ';
+        case BLINKY:
+            return 'B';
+        case CLYDE:
+            return 'C';
+        case INKY:
+            return 'I';
+        case PINKY:
+            return 'G';
+        case WALL:
+            return '#';
+        case POINT:
+            return '.';
+        default:
+            return ' ';
+    }
 }

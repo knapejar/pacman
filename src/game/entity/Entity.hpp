@@ -19,6 +19,7 @@ class Entity{
     protected:
         Position position; //Entity position is being calculated *2 in order to smooth the animation
         Position lastPosition;
+        Position spawnPosition;
         Angle angle;
         bool isAlive = true;
         string name = "Entity";
@@ -33,6 +34,7 @@ class Entity{
         Entity(Position position, Angle angle);
         ~Entity();
         Entity importMap(Map * map);
+        string getName();
         Position getPosition();
         Entity setPosition(Position position);
         Angle getAngle();
@@ -42,4 +44,5 @@ class Entity{
         Entity hide(WINDOW *window);
         Entity render(WINDOW *window);
         Entity renderHalf(WINDOW *window);
+        void respawn();
 };

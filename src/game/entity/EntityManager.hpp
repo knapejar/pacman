@@ -7,8 +7,8 @@
 #include "Ghost.hpp"
 #include "Blinky.hpp"
 #include "Clyde.hpp"
-//include "ghosts/Inky.hpp"
-//#include "ghosts/Pinky.hpp"
+#include "Inky.hpp"
+#include "Pinky.hpp"
 #include "../map/Map.hpp"
 
 #include <algorithm>
@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <climits>
 
 
 
@@ -24,6 +25,8 @@ class EntityManager{
     private:
         Map * map;
         WINDOW * window;
+        size_t totalTicks = 0;
+        size_t ghostsReleased = 0;
 
     public:
         Player player;
@@ -38,4 +41,6 @@ class EntityManager{
         EntityManager renderHalf();
         EntityManager hide();
         EntityManager tick();
+
+        bool gameEnded();
 };

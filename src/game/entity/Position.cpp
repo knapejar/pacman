@@ -72,3 +72,6 @@ bool Position::operator==(Position position){
 bool Position::operator!=(Position position){
     return this->x != position.getX() || this->y != position.getY();
 }
+int Position::distance(Position position){
+    return abs(this->x - position.getX()) + abs(this->y - position.getY());
+}
