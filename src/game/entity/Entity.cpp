@@ -67,7 +67,7 @@ Entity Entity::render(WINDOW *window){
     if (window == nullptr)
         return *this;
     wattron(window, COLOR_PAIR(color));
-    mvwprintw(window, position.getY(), position.getX()*2, "██");
+    mvwprintw(window, position.getY(), position.getX()*2, renderName.c_str());
     return *this;
 }
 
@@ -80,15 +80,15 @@ Entity Entity::renderHalf(WINDOW *window){
     }
     wattron(window, COLOR_PAIR(color));
     if (position.getX() == lastPosition.getX() and position.getY() < lastPosition.getY()){
-        mvwprintw(window, position.getY(), position.getX()*2, "▄▄");
-        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "▀▀");
+        mvwprintw(window, position.getY(), position.getX()*2, renderNameLower.c_str());
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, renderNameUpper.c_str());
     } else if (position.getX() == lastPosition.getX() and position.getY() > lastPosition.getY()){
-        mvwprintw(window, position.getY(), position.getX()*2, "▀▀");
-        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, "▄▄");
+        mvwprintw(window, position.getY(), position.getX()*2, renderNameUpper.c_str());
+        mvwprintw(window, lastPosition.getY(), lastPosition.getX()*2, renderNameLower.c_str());
     } else if (position.getY() == lastPosition.getY() and position.getX() < lastPosition.getX()){
-        mvwprintw(window, position.getY(), position.getX()*2 + 1, "██");
+        mvwprintw(window, position.getY(), position.getX()*2 + 1, renderName.c_str());
     } else if (position.getY() == lastPosition.getY() and position.getX() > lastPosition.getX()){
-        mvwprintw(window, position.getY(), position.getX()*2 - 1, "██");
+        mvwprintw(window, position.getY(), position.getX()*2 - 1, renderName.c_str());
     }
     return *this;
 }

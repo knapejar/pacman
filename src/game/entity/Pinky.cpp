@@ -6,8 +6,6 @@ using namespace std;
 
 Pinky::Pinky():Ghost(){
     this->name = "Pinky";
-    this->saveName = "B";
-    this->renderName = "BB";
     this->color = 5;
     this->angle = Angle(2);
 }
@@ -33,7 +31,7 @@ void Pinky::tick(int tick){
         nextPosition = this->position;
         nextPosition.move(this->angle, 1);
         teleportCheck(nextPosition);
-        //Collision
+        
         if (!map->wall(nextPosition)){
             break;
         }

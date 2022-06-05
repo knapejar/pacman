@@ -9,9 +9,6 @@ EntityManager::EntityManager(){
     ghostsReleased = 0;
 }
 
-EntityManager::~EntityManager(){
-}
-
 EntityManager EntityManager::importMap(Map * map){
     this->map = map;
 
@@ -98,7 +95,7 @@ bool EntityManager::gameEnded(){
         if (distance < minimalDistance){
             minimalDistance = distance;
         }
-        if (nextPosition == ghost->getPosition()){
+        if (nextPosition == ghost->getPosition() && (ghost->getAngle() + Angle(2)).getAngle() == player.getAngle().getAngle()){
             minimalDistance = 0;
             break;
         }

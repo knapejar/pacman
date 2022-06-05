@@ -5,6 +5,11 @@
 
 
 
+/**
+ * @brief All possible field types in the map
+ * @details further information about the enum values can ve foung in the Map class description
+ */
+
 enum fieldType {
     NONE,
     WALL,
@@ -18,6 +23,14 @@ enum fieldType {
     INKY,
     PINKY
 };
+
+
+
+/**
+ * @brief This class is being used to store the map data by the Map class
+ * 
+ * @details It is responsible for parsing each field from the map file stream
+ */
 
 class Field {
     private:

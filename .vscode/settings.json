@@ -89,6 +89,13 @@
     "xtr1common": "cpp",
     "xtree": "cpp",
     "fstream": "cpp",
-    "filesystem": "cpp"
+    "filesystem": "cpp",
+    "chrono": "cpp",
+    "codecvt": "cpp",
+    "locale": "cpp",
+    "ratio": "cpp",
+    "string_view": "cpp",
+    "xlocbuf": "cpp",
+    "xlocmes": "cpp"
   }
 }

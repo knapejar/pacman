@@ -6,8 +6,6 @@ using namespace std;
 
 Blinky::Blinky():Ghost(){
     this->name = "Blinky";
-    this->saveName = "B";
-    this->renderName = "BB";
     this->color = 3;
     this->angle = Angle(2);
 }

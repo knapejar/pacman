@@ -5,6 +5,12 @@
 #define DOWN 2
 #define LEFT 3
 
+/**
+ * @brief Brief self-explanatory class used to store angle values
+ *
+ * @details 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
+ */
+
 class Angle{
     private:
         int angle;

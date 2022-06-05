@@ -23,20 +23,8 @@ string Ghost::getState(){
     switch (this->state){
         case CAGED:
             return "Caged";
-        case RANDOM:
-            return "Random";
-        case CHASE:
-            return "Chase";
-        case CHASE_TRYHARD:
-            return "ChaseTryHard";
-        case SCATTER:
-            return "Scatter";
-        case FRIGHTENED:
-            return "Frightened";
-        case DEAD:
-            return "Dead";
         default:
-            return "Unknown";
+            return "Hunting";
     }
 }
 void Ghost::frighten(){

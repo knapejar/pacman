@@ -1,14 +1,12 @@
 #include "Menu.hpp"
 
+using namespace std;
+
+
+
 Menu::Menu() {
     //To be implemented
 }
-
-/**
- * @brief Method to create a new menu window
- * 
- * @return ScreenState - the next screen state
- */
 
 ScreenState Menu::show() {
     char list[4][6] = { "Play", "Load", "HowTo", "Exit" };
@@ -21,10 +19,10 @@ ScreenState Menu::show() {
 	int startx = (COLS - width) / 2;
 	this->newWindow(height, width, starty, startx);
         
-    mvwprintw(this->window, 2, 4, "PACMAN");
-    mvwprintw(this->window, 3, 2, "──────────");
-    mvwprintw(this->window, 9, 1, "(c) KNAPEJAR");
-    mvwprintw(this->window, 10, 1, "CVUT FIT 2022");
+    mvwprintw(this->window, 2, 4, config.menuHeadline.c_str());
+    mvwprintw(this->window, 3, 2, config.menuSplitter.c_str());
+    mvwprintw(this->window, 9, 1, config.menuCopyright.c_str());
+    mvwprintw(this->window, 10, 1, config.menuFit.c_str());
 
     // Print all the menu items and highlight the first one
     for(i = 0; i < 4; i++){

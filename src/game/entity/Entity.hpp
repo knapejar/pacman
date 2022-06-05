@@ -17,6 +17,13 @@
 
 
 
+/**
+ * @brief This is the base class for all entities including the Player and the Ghost classes
+ * 
+ * @details This class is being implemented by the EntityManager class and is responsible for the entity logic and rendering
+ * @details Configuration of the renderer can be done in the Config class
+ */
+
 class Entity{
     public:
         Config config;
@@ -37,17 +44,95 @@ class Entity{
         Entity();
         Entity(Position position, Angle angle);
         ~Entity();
+
+        /**
+         * @brief This method imports the map data from the Map class
+         * 
+         * @param map 
+         * @return Entity 
+         */
         Entity importMap(Map * map);
+
+        /**
+         * @brief Get the Name object
+         * 
+         * @return std::string 
+         */
         std::string getName();
+
+        /**
+         * @brief Get the Position object
+         * 
+         * @return Position 
+         */
         Position getPosition();
+
+        /**
+         * @brief Set the Position object
+         * 
+         * @param position 
+         * @return Entity 
+         */
         Entity setPosition(Position position);
+
+        /**
+         * @brief Get the Angle object
+         * 
+         * @return Angle 
+         */
         Angle getAngle();
+
+        /**
+         * @brief Set the Angle object
+         * 
+         * @param angle 
+         * @return Entity 
+         */
         Entity setAngle(Angle angle);
+
+        /**
+         * @brief Move the entity back in the bounds of the map
+         * 
+         * @param position - the desired position to repair
+         * @return bool 
+         */
         void teleportCheck();
         void teleportCheck(Position & position);
+
+        /**
+         * @brief Performs one tick of the entity logic
+         * 
+         * @return Entity 
+         */
         Entity tick();
+
+        /**
+         * @brief Hides the entity
+         * 
+         * @param window 
+         * @return Entity 
+         */
         Entity hide(WINDOW *window);
+
+        /**
+         * @brief Renders the entity
+         * 
+         * @param window 
+         * @return Entity 
+         */
         Entity render(WINDOW *window);
+
+        /**
+         * @brief Renders the entity between two ticks to make the smooth animation
+         * 
+         * @param window 
+         * @return Entity 
+         */
         Entity renderHalf(WINDOW *window);
+
+        /**
+         * @brief Respawns the entity at the spawn position
+         * 
+         */
         void respawn();
 };

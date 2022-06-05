@@ -4,10 +4,8 @@
 #include <math.h>
 
 /**
- * @brief The Position class
- * @details This class is used to store the position of an entity.
- * @var x The x coordinate of the entity.
- * @var y The y coordinate of the entity.
+ * @brief The Position class used to store the 2D position of an entity
+ * @details User by map (fields) and entities
  */
 
 class Position {
