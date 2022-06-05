@@ -1,15 +1,14 @@
 Před odevzdáním:
 - Komentáře do kódu
-- Aktualizovat pojednání o polymorfismu
 
 
 - Implementovat třešničku na žraní duchů
 - Smysuplné výpisky vedle duchů
-- Konfigurační soubor? config.hpp?
+- Konfigurační soubor - doimplementovat Config.hpp
 
 
 
-Přidat screen s textem o výhře / prohře, použít i k screenu about
+
 
 1) Menu
 Přidat catchování runtime erroru při načítání mapy

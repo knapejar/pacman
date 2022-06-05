@@ -47,11 +47,14 @@ ScreenState TextScreen::show() {
         mvwprintw(this->window, i + 2, (width - this->content[i].length()) / 2, this->content[i].c_str());
     }
 
-    mvwprintw(this->window, height - 2, (width - 26) / 2, "Press any key to continue");
+    mvwprintw(this->window, height - 2, (width - 24) / 2, "Press enter to continue");
 
     wrefresh(this->window); // update the terminal screen
 
-    wgetch(this->window);
+    int ch;
+    while((ch = wgetch(this->window)) != 10){
+        //Do nothing :)
+    }
 
     destroyWindow();
     endwin();
