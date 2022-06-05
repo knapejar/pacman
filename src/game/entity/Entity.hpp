@@ -4,6 +4,8 @@
 
 #include "../map/Map.hpp"
 
+#include "../../Config.hpp"
+
 #include "Angle.hpp"
 #include "Position.hpp"
 
@@ -16,6 +18,8 @@
 
 
 class Entity{
+    public:
+        Config config;
     protected:
         Position position; //Entity position is being calculated *2 in order to smooth the animation
         Position lastPosition;
@@ -24,9 +28,9 @@ class Entity{
         bool isAlive = true;
         std::string name = "Entity";
         std::string saveName = "?";
-        std::string renderName = "██";
-        std::string renderNameLower = "▄▄";
-        std::string renderNameUpper = "▀▀";
+        std::string renderName = config.entityRenderBox;
+        std::string renderNameLower = config.entityRenderBoxLower;
+        std::string renderNameUpper = config.entityRenderBoxUpper;
         Map * map;
     public:
         int color = 1; //WHITE

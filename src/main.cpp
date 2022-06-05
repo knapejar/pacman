@@ -50,7 +50,7 @@ int main(){
                     current = textScreen.show();
                 }
                 current = ScreenState::MENU;
-        } else if (current == ScreenState::ABOUT){
+        } else if (current == ScreenState::HOWTO){
                 TextScreen textScreen = TextScreen(config.about);
                 current = textScreen.show();
         } else {

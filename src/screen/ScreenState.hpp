@@ -2,6 +2,6 @@ enum ScreenState{
     GAME,
     LOAD,
     MENU,
-    ABOUT,
+    HOWTO,
     EXIT
 };

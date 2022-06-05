@@ -11,7 +11,7 @@ Menu::Menu() {
  */
 
 ScreenState Menu::show() {
-    char list[4][6] = { "Play", "Load", "About", "Exit" };
+    char list[4][6] = { "Play", "Load", "HowTo", "Exit" };
     char item[9]; //Currently printed item
     int ch, i = 0; //Temporary char from keyboard, i - current item
     initscr();
@@ -71,7 +71,7 @@ ScreenState Menu::show() {
         case 1:
             return ScreenState::LOAD;
         case 2:
-            return ScreenState::ABOUT;
+            return ScreenState::HOWTO;
         case 3:
             return ScreenState::EXIT;
         default:

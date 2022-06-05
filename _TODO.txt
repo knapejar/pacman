@@ -1,14 +1,6 @@
 Před odevzdáním:
+
 - Komentáře do kódu
-
-
-- Implementovat třešničku na žraní duchů
-- Smysuplné výpisky vedle duchů
+- Smysuplné výpisky vedle duchů - lepší AI
 - Konfigurační soubor - doimplementovat Config.hpp
 
-
-
-
-
-1) Menu
-Přidat catchování runtime erroru při načítání mapy
