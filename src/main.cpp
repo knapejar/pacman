@@ -1,14 +1,16 @@
 #include "screen/Menu.hpp"
+#include "screen/TextScreen.hpp"
 #include "game/Game.hpp"
 //#include "screen/SelectFileName.hpp"
 #include "selfTest.hpp"
 
+#include "Config.hpp"
 #include <locale.h>
 
 using namespace std;
                          
-                                     
-
+                       
+Config config;
 
 /**
  * Main function
@@ -27,7 +29,6 @@ int main(){
     selfTest.test();
 
     Menu menu = Menu();
-
     ScreenState current = ScreenState::MENU;
     
     while (current != ScreenState::EXIT){
@@ -41,6 +42,9 @@ int main(){
                 Game game = Game("examples/medium.pacman");
                 game.run();
                 current = ScreenState::MENU;
+        } else if (current == ScreenState::ABOUT){
+                TextScreen textScreen = TextScreen(config.about);
+                current = textScreen.show();
         } else {
                 current = ScreenState::EXIT;
         }

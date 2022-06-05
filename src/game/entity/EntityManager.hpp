@@ -23,8 +23,8 @@
 
 class EntityManager{
     private:
-        Map * map;
-        WINDOW * window;
+        Map * map = nullptr;
+        WINDOW * window = nullptr;
         size_t totalTicks = 0;
         size_t ghostsReleased = 0;
 

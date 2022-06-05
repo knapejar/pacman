@@ -51,6 +51,8 @@ Entity Entity::setAngle(Angle angle){
 }
 
 Entity Entity::hide(WINDOW *window){
+    if (window == nullptr)
+        return *this;
     wattron(window, COLOR_PAIR(1));
     ostringstream ss;
     map->getField(this->position).render(ss);
@@ -62,12 +64,16 @@ Entity Entity::hide(WINDOW *window){
 }
 
 Entity Entity::render(WINDOW *window){
+    if (window == nullptr)
+        return *this;
     wattron(window, COLOR_PAIR(color));
     mvwprintw(window, position.getY(), position.getX()*2, "██");
     return *this;
 }
 
 Entity Entity::renderHalf(WINDOW *window){
+    if (window == nullptr)
+        return *this;
     if (position == lastPosition){
         render(window);
         return *this;

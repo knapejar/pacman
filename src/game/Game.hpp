@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ncurses.h>
+#include "../screen/TextScreen.hpp"
 
 #include "map/Map.hpp"
 #include "entity/Angle.hpp"

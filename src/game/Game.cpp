@@ -136,16 +136,21 @@ void Game::run(){
         wrefresh(window);
         napms(tickLength);
     }
-    cout << "EXIT\n";
+    
     //Delete window
     wtimeout(window, 1);
+    string message = "";
     if (gameState == GameState::WON){
-    mvwaddstr(window, 0, map.getWidth() - 5, "You WON!");
+        message = "You WON!\n \n";
     } else if (gameState == GameState::GAMEOVER){
-    mvwaddstr(window, 0, map.getWidth() - 5, "Game Over!");
+        message = "Game Over!\n \n";
     } else {
-        mvwaddstr(window, 0, map.getWidth() - 5, "Paused");
+        message = "Gave up!\n \n";
     }
+    
+    TextScreen textScreen = TextScreen(message);
+    textScreen.show();
+
 	//Clean window
     wclear(window);
     wrefresh(window);

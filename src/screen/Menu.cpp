@@ -4,41 +4,48 @@ Menu::Menu() {
     //To be implemented
 }
 
-
-WINDOW *create_newwin(int height, int width, int starty, int startx);
-void destroy_win(WINDOW *local_win);
+/**
+ * @brief Method to create a new menu window
+ * 
+ * @return ScreenState - the next screen state
+ */
 
 ScreenState Menu::show() {
-    WINDOW *w;
-    char list[4][7] = { "Play", "Load", "About", "Exit" };
-    char item[9];
-    int ch, i = 0;
-    initscr(); // initialize Ncurses
-	int height = 10;
-	int width = 12;
-    int starty = (LINES - height) / 2;	/* Calculating for a center placement */
-	int startx = (COLS - width) / 2;	/* of the window		*/
-	w = create_newwin(height, width, starty, startx);
-    // now print all the menu items and highlight the first one
+    char list[4][6] = { "Play", "Load", "About", "Exit" };
+    char item[9]; //Currently printed item
+    int ch, i = 0; //Temporary variables, i - current item
+    initscr();
+	int height = 12;
+	int width = 15;
+    int starty = (LINES - height) / 2;
+	int startx = (COLS - width) / 2;
+	this->newWindow(height, width, starty, startx);
+        
+    mvwprintw(this->window, 2, 4, "PACMAN");
+    mvwprintw(this->window, 3, 2, "──────────");
+    mvwprintw(this->window, 9, 1, "(c) KNAPEJAR");
+    mvwprintw(this->window, 10, 1, "CVUT FIT 2022");
+
+    // Print all the menu items and highlight the first one
     for( i=0; i<4; i++ ){
         if( i == 0 ) 
-            wattron( w, A_STANDOUT ); // highlights the first item.
+            wattron(this->window, A_STANDOUT );
         else
-            wattroff( w, A_STANDOUT );
-        sprintf(item, "%-7s",  list[i]);
-        mvwprintw( w, i+1, 2, "%s", item );
+            wattroff(this->window, A_STANDOUT );
+        sprintf(item, "%-7s", list[i]);
+        mvwprintw(this->window, i+4, 2, "%s", item );
     }
-    wrefresh( w ); // update the terminal screen
+    wrefresh(this->window); // update the terminal screen
     i = 0;
-    noecho(); // disable echoing of characters on the screen
-    keypad( w, TRUE ); // enable keyboard input for the window.
-    curs_set( 0 ); // hide the default screen cursor.
-    // get the input
-    while((ch = wgetch(w)) != 10){ 
-        // right pad with spaces to make the items appear with even width.
+    noecho();
+    keypad(this->window, TRUE );
+    curs_set( 0 );
+    
+    while((ch = wgetch(this->window)) != 10){ 
+        // Make the items appear with even width
         sprintf(item, "%-7s",  list[i]); 
-        mvwprintw( w, i+1, 2, "%s", item ); 
-        // use a variable to increment or decrement the value based on the input.
+        mvwprintw(this->window, i+4, 2, "%s", item ); 
+        // Move the cursor to the next item in the list
         switch( ch ) {
             case KEY_UP:
                 i--;
@@ -49,13 +56,13 @@ ScreenState Menu::show() {
                 i = ( i>3 ) ? 0 : i;
                 break;
             }
-        // now highlight the next item in the list.
-        wattron( w, A_STANDOUT );
+        // Highlit the chosen item
+        wattron(this->window, A_STANDOUT );
         sprintf(item, "%-7s",  list[i]);
-        mvwprintw( w, i+1, 2, "%s", item);
-        wattroff( w, A_STANDOUT );
+        mvwprintw(this->window, i+4, 2, "%s", item);
+        wattroff(this->window, A_STANDOUT );
     }
-    delwin(w);
+    destroyWindow();
     endwin();
 
     switch(i){
@@ -64,28 +71,11 @@ ScreenState Menu::show() {
         case 1:
             return ScreenState::LOAD;
         case 2:
-            return ScreenState::MENU;
+            return ScreenState::ABOUT;
         case 3:
             return ScreenState::EXIT;
         default:
             return ScreenState::EXIT;
     }
     return ScreenState::EXIT;
-}
-
-WINDOW *create_newwin(int height, int width, int starty, int startx)
-{	WINDOW *local_win;
-
-	local_win = newwin(height, width, starty, startx);
-	box(local_win, 0 , 0);
-	wrefresh(local_win);
-
-	return local_win;
-}
-
-void destroy_win(WINDOW *local_win)
-{	
-	wborder(local_win, ' ', ' ', ' ',' ',' ',' ',' ',' ');
-	wrefresh(local_win);
-	delwin(local_win);
 }

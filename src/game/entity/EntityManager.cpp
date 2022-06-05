@@ -116,6 +116,7 @@ bool EntityManager::gameEnded(){
     if (minimalDistance < 1){
         if (player.getLives() > 1){
             player.loseLife();
+            player.hide(window);
             player.respawn();
         } else {
             return true;
