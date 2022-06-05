@@ -17,6 +17,8 @@ class Config{
     public:
         int tickLength = 100; // One tick length in ms
         int playerHealth = 3; // Player health at the beginning of the game
+        bool performSelfTest = true;
+        bool selfTestVerbose = false;
 
         std::string entityRenderBox = "██";
         std::string entityRenderBoxLower = "▄▄";

@@ -6,7 +6,12 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
+
+/**
+ * @brief Use it to display overlay text on the screen
+ * 
+ * @details Used to display HowTo screen, game results and exceptions during loading the map
+ */
 
 class TextScreen : public Screen{
     private:
@@ -14,5 +19,11 @@ class TextScreen : public Screen{
     public:
         TextScreen();
         TextScreen(std::string content);
+
+        /**
+         * @brief Shows the user the content of the text screen
+         * 
+         * @return ScreenState 
+         */
         ScreenState show();
 };

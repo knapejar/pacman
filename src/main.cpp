@@ -27,38 +27,51 @@ int main(){
     setlocale(LC_ALL, "");
     srand (time(NULL));
 
-    SelfTest selfTest;
-    selfTest.test();
+    if (config.performSelfTest){
+        SelfTest selfTest = SelfTest(config.selfTestVerbose);
+        selfTest.test();
+    }
 
     Menu menu = Menu();
     ScreenState current = ScreenState::MENU;
 
-    while (current != ScreenState::EXIT){
+    while (current != ScreenState::EXIT){ // Repeat the state machine until the user chooses to exit
+
         if (current == ScreenState::MENU){
+
             current = menu.show();
-        } else if (current == ScreenState::GAME){
+
+        } else if (current == ScreenState::GAME){ // Start the game
+
             Game game = Game();
             game.run();
             current = ScreenState::MENU;
-        } else if (current == ScreenState::LOAD){
+
+        } else if (current == ScreenState::LOAD){ // Load the map and start the game
+
             try{
                 SelectFileName selectFileName = SelectFileName(config.mapsFolder);
-                selectFileName.show();
+                selectFileName.show(); //Prompts the user to select a map
                 Game game = Game(selectFileName.getChosenFileName());
                 game.run();
-            } catch (std::filesystem::filesystem_error const&e){
+            } catch (std::filesystem::filesystem_error const&e){ //Catches the error when the map folder is not found
                 TextScreen textScreen = TextScreen(config.mapErrorMsg + config.folderErrorMsg);
                 current = textScreen.show();
-            } catch (std::runtime_error const&e){
+            } catch (std::runtime_error const&e){ //Catches any error with the map file
                 TextScreen textScreen = TextScreen(config.mapErrorMsg + "\n" + string(e.what()) + "\n \n");
                 current = textScreen.show();
             }
             current = ScreenState::MENU;
-        } else if (current == ScreenState::HOWTO){
+
+        } else if (current == ScreenState::HOWTO){ // Show the how to play screen
+
             TextScreen textScreen = TextScreen(config.about);
             current = textScreen.show();
+
         } else {
-            current = ScreenState::EXIT;
+
+            current = ScreenState::EXIT; // Exit the game
+
         }
     }
 

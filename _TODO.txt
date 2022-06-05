@@ -1,6 +1,0 @@
-Před odevzdáním:
-
-- Komentáře do kódu
-- Smysuplné výpisky vedle duchů - lepší AI
-- Konfigurační soubor - doimplementovat Config.hpp
-

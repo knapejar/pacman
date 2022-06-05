@@ -7,7 +7,7 @@
 /**
  * @brief Class responsible for the player behaviour - parsing the input and moving the player, eating, counting the score and health management
  * 
- * @details This class is being implemented by the EntityManager class and is responsible for the entity logic and rendering
+ * @details This class is being implemented by the EntityManager class and is responsible for the player logic and rendering
  */
 
 class Player : public Entity{

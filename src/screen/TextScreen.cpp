@@ -1,5 +1,9 @@
 #include "TextScreen.hpp"
 
+using namespace std;
+
+
+
 TextScreen::TextScreen() {
     this->content.resize(0);
     this->content.emplace_back("Call this constructor with a string");
