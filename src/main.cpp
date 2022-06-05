@@ -27,30 +27,22 @@ int main(){
     selfTest.test();
 
     Menu menu = Menu();
-    Game game = Game("examples/medium.pacman");
-
-    //Temporary turn on the game wight after the start
-    
-    game.run();
 
     ScreenState current = ScreenState::MENU;
     
     while (current != ScreenState::EXIT){
-        printf("Hello, World!\n");
-        switch (current){
-            case ScreenState::MENU:
+        if (current == ScreenState::MENU){
                 current = menu.show();
-                break;
-            case ScreenState::GAME:
-                game = Game();
+        } else if (current == ScreenState::GAME){
+                Game game = Game();
                 game.run();
-                break;
-            case ScreenState::LOAD:
-                //Game game(SelectFileName::show("Load game"));
-                //game.run();
-                break;
-            case ScreenState::EXIT:
-                break;
+                current = ScreenState::MENU;
+        } else if (current == ScreenState::LOAD){
+                Game game = Game("examples/medium.pacman");
+                game.run();
+                current = ScreenState::MENU;
+        } else {
+                current = ScreenState::EXIT;
         }
     }
 

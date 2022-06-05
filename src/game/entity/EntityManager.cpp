@@ -91,10 +91,16 @@ EntityManager EntityManager::tick(){
 
 bool EntityManager::gameEnded(){
     int minimalDistance = INT_MAX;
+    Position nextPosition = player.getPosition();
+    nextPosition.move(player.getAngle(), 1);
     for (auto ghost : ghosts){
         int distance = player.getPosition().distance(ghost->getPosition());
         if (distance < minimalDistance){
             minimalDistance = distance;
+        }
+        if (nextPosition == ghost->getPosition()){
+            minimalDistance = 0;
+            break;
         }
     }
 

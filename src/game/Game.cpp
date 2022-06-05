@@ -146,6 +146,8 @@ void Game::run(){
     } else {
         mvwaddstr(window, 0, map.getWidth() - 5, "Paused");
     }
+	//Clean window
+    wclear(window);
     wrefresh(window);
     delwin(window);
     endwin();

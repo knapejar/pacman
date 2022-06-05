@@ -90,10 +90,15 @@ Map::Map(std::string filename){
 }
 
 Map::~Map(){
-
+    for (int i = 0; i < height; i++){
+        map[i].clear();
+    }
 }
 
 Field Map::getField(Position position){
+    if (position.getX() < 0 || position.getX() >= width || position.getY() < 0 || position.getY() >= height){
+        return Field(WALL);
+    }
     return map[position.getY()][position.getX()];
 }
 
