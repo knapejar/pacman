@@ -13,8 +13,7 @@
 #include <vector>
 #include <utility>
 
-using namespace std;
-        
+
 
 class Entity{
     protected:
@@ -23,11 +22,11 @@ class Entity{
         Position spawnPosition;
         Angle angle;
         bool isAlive = true;
-        string name = "Entity";
-        string saveName = "?";
-        string renderName = "██";
-        string renderNameLower = "▄▄";
-        string renderNameUpper = "▀▀";
+        std::string name = "Entity";
+        std::string saveName = "?";
+        std::string renderName = "██";
+        std::string renderNameLower = "▄▄";
+        std::string renderNameUpper = "▀▀";
         Map * map;
     public:
         int color = 1; //WHITE
@@ -35,7 +34,7 @@ class Entity{
         Entity(Position position, Angle angle);
         ~Entity();
         Entity importMap(Map * map);
-        string getName();
+        std::string getName();
         Position getPosition();
         Entity setPosition(Position position);
         Angle getAngle();

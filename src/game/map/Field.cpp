@@ -1,5 +1,9 @@
 #include "Field.hpp"
 
+using namespace std;
+
+
+
 Field::Field(){
     this->field = NONE;
 }
@@ -98,6 +102,12 @@ bool Field::wall(){
 }
 bool Field::point(){
     return field == POINT;
+}
+bool Field::ghost(){
+    return field == GHOST || field == BLINKY || field == CLYDE || field == INKY || field == PINKY;
+}
+bool Field::pacman(){
+    return field == PACMAN;
 }
 char Field::toChar(){
     switch (field){

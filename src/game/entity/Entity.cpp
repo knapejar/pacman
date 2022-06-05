@@ -1,5 +1,9 @@
 #include "Entity.hpp"
 
+using namespace std;
+        
+
+        
 Entity::Entity(){
     this->position = Position(0, 0);
     this->lastPosition = this->position;

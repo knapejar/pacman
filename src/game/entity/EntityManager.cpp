@@ -2,15 +2,11 @@
 
 using namespace std;
 
+
+
 EntityManager::EntityManager(){
     totalTicks = 0;
     ghostsReleased = 0;
-    //THIS HAS TO BE REPLACED WITH AUTOLOADING!!
-    //player.setPosition(Position(8, 11));
-
-    //ghosts.emplace_back(shared_ptr<Ghost>(new Blinky()));
-    //ghosts[0]->setPosition(Position(8, 7));
-    //ghosts.emplace_back(shared_ptr<Ghost>(new Clyde()));
 }
 
 EntityManager::~EntityManager(){
@@ -79,7 +75,7 @@ EntityManager EntityManager::hide(){
 EntityManager EntityManager::tick(){
     totalTicks++;
     //Mechanics for releasing the ghosts
-    if (totalTicks % 60 == 1){
+    if (totalTicks % map->getGhostReleaseTimeout() == 1){
         if (ghostsReleased < ghosts.size()){
             ghosts[ghostsReleased]->respawn();
             ghostsReleased++;
@@ -103,6 +99,7 @@ bool EntityManager::gameEnded(){
     }
 
     /*
+    //Sežrání ducha
     if (minimalDistance < 1){
         for (auto ghost : ghosts){
             ghost->respawn();

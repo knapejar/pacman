@@ -1,5 +1,9 @@
 #include "Clyde.hpp"
 
+using namespace std;
+
+
+
 Clyde::Clyde():Ghost(){
     this->name = "Clyde";
     this->saveName = "B";

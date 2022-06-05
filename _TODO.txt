@@ -9,8 +9,11 @@ Před odevzdáním:
 - Načíst hodnotu ghost release timeout ze souboru
 - Smysuplné výpisky vedle duchů
 
-Mezní hodnoty:
-limitovat počet duchů
-limitovat počet spawnpointů
-podmínit alespoň jeden spawnpoint
-podmínit alespoň jeden bod
+- Konfigurační soubor? config.hpp?
+
+
+
+
+1)
+GUI
+Přidat catchování runtime erroru při načítání mapy

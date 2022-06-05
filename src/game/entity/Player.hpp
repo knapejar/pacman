@@ -4,9 +4,9 @@
 
 class Player : public Entity{
     private:
-        string name = "Player";
-        string saveName = "P";
-        string renderName = "XX";
+        std::string name = "Player";
+        std::string saveName = "P";
+        std::string renderName = "XX";
         Angle targetAngle;
         int score = 0;
         int lives = 3;

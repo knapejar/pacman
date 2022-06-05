@@ -14,6 +14,8 @@
 #include <vector>
 #include <memory>
 
+
+
 enum GameState{
     PLAYING,
     PAUSED,
@@ -32,7 +34,7 @@ class Game{
         int infoScreenSize = 3;
     public:
         Game();
-        Game(string fileName);
+        Game(std::string fileName);
         ~Game();
         void renderScoreBoard();
         void run();

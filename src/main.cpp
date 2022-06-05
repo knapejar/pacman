@@ -1,10 +1,12 @@
 #include "screen/Menu.hpp"
-//#include "screen/SelectFileName.hpp"
 #include "game/Game.hpp"
+//#include "screen/SelectFileName.hpp"
+#include "selfTest.hpp"
 
 #include <locale.h>
 
 using namespace std;
+                         
                                      
 
 
@@ -21,8 +23,11 @@ using namespace std;
 int main(){
     setlocale(LC_ALL, "");
 
+    SelfTest selfTest;
+    selfTest.test();
+
     Menu menu = Menu();
-    Game game = Game("examples/openSpace.pacman");
+    Game game = Game("examples/medium.pacman");
 
     //Temporary turn on the game wight after the start
     

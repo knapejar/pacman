@@ -1,5 +1,9 @@
 #include "Map.hpp"
 
+using namespace std;
+
+
+
 Map::Map(){
     //Declare initial map 
     width = 17;
@@ -48,6 +52,8 @@ Map::Map(std::string filename){
         throw std::runtime_error("Invalid width or height - minimum is w:9, h:9");
     }
     //Load map
+    int ghostAmount = 0;
+    bool hasPacman = false;
     map.resize(height);
     for (int i = 0; i < height; i++){
         map[i].resize(width);
@@ -56,9 +62,31 @@ Map::Map(std::string filename){
             if (file.fail()){
                 throw std::runtime_error("Invalid map");
             }
+            if (map[i][j].ghost()){
+                ghostAmount++;
+            }
+            if (map[i][j].pacman()){
+                if (hasPacman){
+                    throw std::runtime_error("Multiple pacmans");
+                }
+                hasPacman = true;
+            }
+            if (ghostAmount > 9){
+                throw std::runtime_error("Too many ghosts");
+            }
         }
     }
+    if (!hasPacman){
+        throw std::runtime_error("No pacman");
+    }
     calculateScoreTarget();
+    if (getTotalScore() == 0){
+        throw std::runtime_error("No score target - add some points to the map");
+    }
+    file >> ghostReleaseTimeout;
+    if (file.fail() || ghostReleaseTimeout < 2 || ghostReleaseTimeout > 1000){
+        throw std::runtime_error("Ghost release timetout could not be parsed, minimal value is 2, maximal 1000");
+    }
 }
 
 Map::~Map(){
@@ -77,6 +105,10 @@ int Map::getHeight(){
     return this->height;
 }
 
+int Map::getGhostReleaseTimeout(){
+    return this->ghostReleaseTimeout;
+}
+
 ostream & Map::render(ostream & os){
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
@@ -91,6 +123,12 @@ bool Map::wall(Position position){
 }
 bool Map::point(Position position){
     return map[position.getY()][position.getX()].point();
+}
+bool Map::ghost(Position position){
+    return map[position.getY()][position.getX()].ghost();
+}
+bool Map::pacman(Position position){
+    return map[position.getY()][position.getX()].pacman();
 }
 
 void Map::calculateScoreTarget(){

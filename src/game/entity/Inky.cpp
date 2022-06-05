@@ -1,5 +1,9 @@
 #include "Inky.hpp"
 
+using namespace std;
+
+
+
 Inky::Inky():Ghost(){
     this->name = "Inky";
     this->saveName = "B";

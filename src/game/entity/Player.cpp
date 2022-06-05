@@ -1,5 +1,9 @@
 #include "Player.hpp"
 
+using namespace std;
+
+
+
 Player::Player():Entity(){
     this->name = "Player";
     this->saveName = "P";

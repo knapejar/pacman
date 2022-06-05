@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 Game::Game(){
     this->map = Map();
     entityManager.importMap(&map);
@@ -113,6 +115,13 @@ void Game::run(){
         //Animation stage in the tick <- should be stored into renderer TODO
         entityManager.tick().hide().renderHalf();
 
+        wrefresh(window);
+        napms(tickLength);
+
+        //Second stage in the tick
+        entityManager.hide().render();
+        renderScoreBoard();
+
         //Check if the player has won
         if (entityManager.player.getScore() >= map.getTotalScore()){
             this->gameState = GameState::WON;
@@ -124,12 +133,6 @@ void Game::run(){
             this->gameState = GameState::GAMEOVER;
         }
 
-        wrefresh(window);
-        napms(tickLength);
-
-        //Second stage in the tick
-        entityManager.hide().render();
-        renderScoreBoard();
         wrefresh(window);
         napms(tickLength);
     }

@@ -1,5 +1,9 @@
 #include "Ghost.hpp"
 
+using namespace std;
+
+
+
 Ghost::Ghost(): Entity(){
     this->nextPosition = Position(0, 0);
     this->state = CAGED;

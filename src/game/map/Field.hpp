@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
+
 
 enum fieldType {
     NONE,
@@ -29,10 +29,12 @@ class Field {
         ~Field();
         Field getField();
         void setFieldType(fieldType field);
-        istream & load(istream & is);
-        ostream & save(ostream & os);
-        ostream & render(ostream & os);
+        std::istream & load(std::istream & is);
+        std::ostream & save(std::ostream & os);
+        std::ostream & render(std::ostream & os);
         bool wall();
         bool point();
+        bool ghost();
+        bool pacman();
         char toChar();
 };

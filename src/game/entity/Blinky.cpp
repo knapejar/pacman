@@ -1,5 +1,9 @@
 #include "Blinky.hpp"
 
+using namespace std;
+
+
+
 Blinky::Blinky():Ghost(){
     this->name = "Blinky";
     this->saveName = "B";

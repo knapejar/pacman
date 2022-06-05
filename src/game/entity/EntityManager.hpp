@@ -30,7 +30,7 @@ class EntityManager{
 
     public:
         Player player;
-        vector<shared_ptr<Ghost>> ghosts;
+        std::vector<std::shared_ptr<Ghost>> ghosts;
         
         EntityManager();
         ~EntityManager();

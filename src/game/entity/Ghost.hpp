@@ -16,14 +16,14 @@ class Ghost : public Entity{
     protected:
         int state = 0;
         Position nextPosition;
-        vector<Angle> path; 
+        std::vector<Angle> path; 
     public:
         Ghost();
         Ghost(Position position, Angle angle);
         ~Ghost();
         virtual void calculatePath() = 0;
         virtual void tick(int tick) = 0;
-        string getState();
+        std::string getState();
         void frighten();
         void normal();
         void respawn();
