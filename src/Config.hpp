@@ -34,4 +34,6 @@ class Config{
         std::string about = "HOW TO PLAY\n \nPacman is the yellow dot :)\nUse the arrow keys to move the pacman.\nCollect the pick-ups to heal.\nAvoid the ghosts - coloured dots.\nCollect all of the dots in the level to win!\n \n";
         std::string folderErrorMsg = "\nPlease create the folder Examples,\nyou can store your maps there.\n \n";
         std::string mapErrorMsg = "Error loading map:";
+
+        std::string selfTestFailure = "Self test failed - turn on verbose in configuration to find out, why.";
 };

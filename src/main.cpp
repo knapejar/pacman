@@ -29,7 +29,10 @@ int main(){
 
     if (config.performSelfTest){
         SelfTest selfTest = SelfTest(config.selfTestVerbose);
-        selfTest.test();
+        if (!selfTest.test()){
+            cout << config.selfTestFailure << endl;
+            return EXIT_FAILURE;
+        }
     }
 
     Menu menu = Menu();

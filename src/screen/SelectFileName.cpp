@@ -20,6 +20,11 @@ SelectFileName::SelectFileName(string path) {
 
 
 ScreenState SelectFileName::show() { 
+    if (this->content.size() == 0) {
+        this->chosenFileName = "";
+        return ScreenState::MENU;
+    }
+
 	int height = 6 + this->content.size();
 	int width = 0;
     for (size_t i = 0; i < this->content.size(); i++) {
