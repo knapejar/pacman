@@ -5,11 +5,9 @@ using namespace std;
 
 
 SelfTest::SelfTest(){
-    this->test();
 }
 SelfTest::SelfTest(bool verbose){
     this->verbose = verbose;
-    this->test();
 }
 SelfTest::~SelfTest(){
 }
