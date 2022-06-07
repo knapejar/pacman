@@ -17,5 +17,5 @@
 class AI{
     public:
         std::vector<Angle>calculatePath(Map * map, Position start, Position end);
-
+        Position randomPosition(Map * map);
 };

@@ -72,4 +72,11 @@ class Player : public Entity{
          * @return Player 
          */
         Player loseLife();
+
+        /**
+         * @brief Resets the player's lives
+         * 
+         * @return Player 
+         */
+        Player resetLives();
 };

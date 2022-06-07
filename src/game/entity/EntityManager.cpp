@@ -35,6 +35,7 @@ EntityManager EntityManager::importMap(Map * map){
         }
     }
 
+    player.resetLives();
     player.resetScore();
     player.importMap(map);
     for (auto ghost : ghosts){

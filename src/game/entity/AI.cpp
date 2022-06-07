@@ -31,8 +31,6 @@ vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
     while (!queue.empty()){
         currentNode = queue.top();
         queue.pop();
-        //TextScreen t("Current node:\n" + to_string(currentNode.position.getX()) + " " + to_string(currentNode.position.getY()) + "\n" + to_string(currentNode.distance) + "\nTarget:\n" + to_string(end.getX()) + " " + to_string(end.getY()) + "\n");
-        //t.show();
 
         if (currentNode.position == end){
             break;
@@ -70,9 +68,6 @@ vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
         return vector<Angle>();
     }
 
-    //TextScreen t("Path found\n \n");
-    //t.show();
-
     //Declare path
     vector<Angle> path;
 
@@ -99,7 +94,7 @@ vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
                 angle = Angle(2);
             }
         }else{
-            if (lowestPosition.getX() > currentNode.position.getX()){¨
+            if (lowestPosition.getX() > currentNode.position.getX()){
                 angle = Angle(3);
             }else{
                 angle = Angle(1);
@@ -115,14 +110,14 @@ vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
     //Reverse path
     reverse(path.begin(), path.end());
 
-    string printPath = "";
-    for (int i = 0; i < path.size(); i++){
-        printPath += to_string(path[i].getAngle()) + " ";
-    }
-    //TextScreen t("Path calculated:\n" + printPath + "\n");
-    //t.show();
-
-    //cout << printPath << endl;
-
     return path;
+}
+
+Position AI::randomPosition(Map * map){
+    Position position;
+    position = Position(rand() % map->getWidth(), rand() % map->getHeight());
+    while (map->wall(position)){
+        position = Position(rand() % map->getWidth(), rand() % map->getHeight());
+    }
+    return position;
 }

@@ -98,3 +98,7 @@ Player Player::loseLife(){
     this->lives--;
     return *this;
 }
+Player Player::resetLives(){
+    this->lives = config.playerHealth;
+    return *this;
+}

@@ -26,11 +26,18 @@ void Blinky::tick(int tick, Position playerPosition){
     this->lastPosition = this->position;
     Position nextPosition = this->position;
 
-    auto path = ai.calculatePath(this->map, this->position, playerPosition);
+    while (this->path.size() <= 0){
+        this->path = this->ai.calculatePath(this->map, this->position, ai.randomPosition(map));
+        reverse(this->path.begin(), this->path.end());
+    }
+    nextPosition.move(this->path.at(path.size() - 1), 1);
+    this->path.pop_back();
 
+    /*
+    auto path = ai.calculatePath(this->map, this->position, playerPosition);
     if (path.size() > 0){
         nextPosition.move(path[0], 1);
-    }
+    }*/
 
     this->position = nextPosition;
     teleportCheck();
