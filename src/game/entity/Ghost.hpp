@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.hpp"
+#include "AI.hpp"
 
 
 
@@ -31,7 +32,8 @@ class Ghost : public Entity{
         int state = 0;
         Position nextPosition;
         std::vector<Angle> path; 
-        
+        AI ai;
+
     public:
         Ghost();
         Ghost(Position position, Angle angle);
@@ -45,7 +47,7 @@ class Ghost : public Entity{
         /**
          * @brief Virtual method to be implemented by the child classes that is responsible for the ghost behaviour
          */
-        virtual void tick(int tick) = 0;
+        virtual void tick(int tick, Position playerPosition) = 0;
 
         /**
          * @brief Get the State object

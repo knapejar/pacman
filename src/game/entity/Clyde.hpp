@@ -13,5 +13,5 @@ class Clyde : public Ghost{
         Clyde();
         ~Clyde();
         void calculatePath();
-        void tick(int tick);
+        void tick(int tick, Position playerPosition);
 };

@@ -31,28 +31,28 @@ Player::~Player(){
 Player Player::keyboardInput(int input){
     switch(input){
         case KEY_UP:
-            setAngle(UP);
+            setAngle(0);
             break;
         case KEY_DOWN:
-            setAngle(DOWN);
+            setAngle(2);
             break;
         case KEY_LEFT:
-            setAngle(LEFT);
+            setAngle(3);
             break;
         case KEY_RIGHT:
-            setAngle(RIGHT);
+            setAngle(1);
             break;
         case 'w':
-            setAngle(UP);
+            setAngle(0);
             break;
         case 's':
-            setAngle(DOWN);
+            setAngle(2);
             break;
         case 'a':
-            setAngle(LEFT);
+            setAngle(3);
             break;
         case 'd':
-            setAngle(RIGHT);
+            setAngle(1);
             break;
         default:
             break;

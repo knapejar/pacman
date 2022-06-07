@@ -41,16 +41,16 @@ Position Position::move(Position position){
 }
 Position Position::move(Angle angle, int distance){
     switch(angle.getAngle()){
-        case UP:
+        case 0:
             this->y -= distance;
             break;
-        case DOWN:
+        case 2:
             this->y += distance;
             break;
-        case LEFT:
+        case 3:
             this->x -= distance;
             break;
-        case RIGHT:
+        case 1:
             this->x += distance;
             break;
     }

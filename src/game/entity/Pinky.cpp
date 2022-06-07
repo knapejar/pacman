@@ -19,7 +19,7 @@ void Pinky::calculatePath(){
     //TODO
 }
 
-void Pinky::tick(int tick){
+void Pinky::tick(int tick, Position playerPosition){
     if (this->state == CAGED)
         return;
 

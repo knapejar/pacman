@@ -13,5 +13,5 @@ class Blinky : public Ghost{
         Blinky();
         ~Blinky();
         void calculatePath();
-        void tick(int tick);
+        void tick(int tick, Position playerPosition);
 };

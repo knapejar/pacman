@@ -85,7 +85,7 @@ EntityManager EntityManager::tick(){
 
     player.tick();
     for (auto ghost : ghosts){
-        ghost->tick(1);
+        ghost->tick(1, player.getPosition());
     }
     return *this;
 }

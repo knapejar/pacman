@@ -19,7 +19,7 @@ void Inky::calculatePath(){
     //TODO
 }
 
-void Inky::tick(int tick){
+void Inky::tick(int tick, Position playerPosition){
     if (this->state == CAGED)
         return;
 

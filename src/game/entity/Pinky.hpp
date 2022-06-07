@@ -13,5 +13,5 @@ class Pinky : public Ghost{
         Pinky();
         ~Pinky();
         void calculatePath();
-        void tick(int tick);
+        void tick(int tick, Position playerPosition);
 };

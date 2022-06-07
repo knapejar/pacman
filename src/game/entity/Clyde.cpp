@@ -19,7 +19,7 @@ void Clyde::calculatePath(){
     //TODO
 }
 
-void Clyde::tick(int tick){
+void Clyde::tick(int tick, Position playerPosition){
     if (this->state == CAGED)
         return;
 

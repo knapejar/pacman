@@ -131,6 +131,8 @@ void Game::run(){
         //Second stage in the tick
         entityManager.hide().render();
         renderScoreBoard();
+        
+        wrefresh(window);
 
         //Check if the player has won
         if (entityManager.player.getScore() >= map.getTotalScore()){
@@ -143,11 +145,9 @@ void Game::run(){
             this->gameState = GameState::GAMEOVER;
         }
 
-        wrefresh(window);
         napms(tickLength);
     }
     
-    //Delete window
     wtimeout(window, 1);
     string message = "";
     if (gameState == GameState::WON){
