@@ -1,0 +1,14 @@
+Opravit polymorfismus
+
+Přidat polymorfismus obrazovek
+
+const & kde má být
+
+cmake měl nějakou chybu? .d se nepoužívají?
+
+
+
+angle jako enum
+
+vector screenstatů s polymorfismem, bude voélat i samotnou hru
+

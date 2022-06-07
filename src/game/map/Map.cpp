@@ -46,6 +46,11 @@ Map::Map(std::string filename){
     }
     //First line is width and height
     file >> width;
+    //Load the default map instead
+    if (file.fail()){
+        new (this) Map();
+        return;
+    }
     file >> height;
     //Check for valid width and height
     if (width < 9 || height < 9 || file.fail()){
@@ -115,8 +120,8 @@ int Map::getGhostReleaseTimeout(){
 }
 
 ostream & Map::render(ostream & os){
-    for(int i = 0; i < height; i++){
-        for(int j = 0; j < width; j++){
+    for (int i = 0; i < height; i++){
+        for (int j = 0; j < width; j++){
             map[i][j].render(os);
         }
     }

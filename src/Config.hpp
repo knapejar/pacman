@@ -17,14 +17,16 @@ class Config{
     public:
         int tickLength = 100; // One tick length in ms
         int playerHealth = 3; // Player health at the beginning of the game
-        bool performSelfTest = true;
+        bool performSelfTest = false;
         bool selfTestVerbose = false;
 
         std::string entityRenderBox = "██";
         std::string entityRenderBoxLower = "▄▄";
         std::string entityRenderBoxUpper = "▀▀";
 
+        std::string defaultMapPlaceholder = "Default map";
         std::string mapsFolder = "examples/";
+        std::string defaultMapFileName = mapsFolder + "/" + "default.pacman";
 
         std::string menuHeadline = "PACMAN";
         std::string menuSplitter = "──────────";

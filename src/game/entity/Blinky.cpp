@@ -25,8 +25,16 @@ void Blinky::tick(int tick){
 
     this->lastPosition = this->position;
     Position nextPosition = this->position;
+
+    int direction = rand() % 2;
+    
+    if (direction == 0){
+        direction = -1;
+    }
+
     if (rand() % 10 + 1 > 5)
         this->angle += Angle(3);
+
     for (int i = 0; i < 4; i++){
         nextPosition = this->position;
         nextPosition.move(this->angle, 1);
@@ -35,7 +43,7 @@ void Blinky::tick(int tick){
         if (!map->wall(nextPosition)){
             break;
         }
-        this->angle += Angle(1);
+        this->angle += Angle(direction);
     }
     this->position = nextPosition;
     teleportCheck();

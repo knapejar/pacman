@@ -3,7 +3,6 @@
 #include "screen/SelectFileName.hpp"
 #include "game/Game.hpp"
 #include "selfTest.hpp"
-
 #include "Config.hpp"
 #include <locale.h>
 
@@ -25,58 +24,21 @@ Config config;
 
 int main(){
     setlocale(LC_ALL, "");
-    srand (time(NULL));
+    srand(time(NULL));
 
     if (config.performSelfTest){
-        SelfTest selfTest = SelfTest(config.selfTestVerbose);
-        if (!selfTest.test()){
-            cout << config.selfTestFailure << endl;
-            return EXIT_FAILURE;
-        }
+        SelfTest(config.selfTestVerbose).test();
     }
 
-    Menu menu = Menu();
+    vector<unique_ptr<Screen>> screens;
+    screens.emplace_back(make_unique<Menu>());
+    screens.emplace_back(make_unique<Game>(config.defaultMapFileName));
+    screens.emplace_back(make_unique<SelectFileName>(config.mapsFolder));
+    screens.emplace_back(make_unique<TextScreen>(config.about));
     ScreenState current = ScreenState::MENU;
 
-    while (current != ScreenState::EXIT){ // Repeat the state machine until the user chooses to exit
-
-        if (current == ScreenState::MENU){
-
-            current = menu.show();
-
-        } else if (current == ScreenState::GAME){ // Start the game
-
-            Game game = Game();
-            game.run();
-            current = ScreenState::MENU;
-
-        } else if (current == ScreenState::LOAD){ // Load the map and start the game
-
-            try{
-                SelectFileName selectFileName = SelectFileName(config.mapsFolder);
-                selectFileName.show(); //Prompts the user to select a map
-                Game game = Game(selectFileName.getChosenFileName());
-                game.run();
-            } catch (std::filesystem::filesystem_error const&e){ //Catches the error when the map folder is not found
-                TextScreen textScreen = TextScreen(config.mapErrorMsg + config.folderErrorMsg);
-                current = textScreen.show();
-            } catch (std::runtime_error const&e){ //Catches any error with the map file
-                TextScreen textScreen = TextScreen(config.mapErrorMsg + "\n" + string(e.what()) + "\n \n");
-                current = textScreen.show();
-            }
-            current = ScreenState::MENU;
-
-        } else if (current == ScreenState::HOWTO){ // Show the how to play screen
-
-            TextScreen textScreen = TextScreen(config.about);
-            current = textScreen.show();
-
-        } else {
-
-            current = ScreenState::EXIT; // Exit the game
-
-        }
-    }
+    while (current != ScreenState::EXIT)
+        current = screens[current]->show();
 
     return EXIT_SUCCESS;
 }

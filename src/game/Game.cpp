@@ -5,13 +5,11 @@ using namespace std;
 
 
 Game::Game(){
-    this->map = Map();
-    entityManager.importMap(&map);
+    this->mapFileName = "";
 }
 
 Game::Game(string fileName){
-    this->map = Map(fileName);
-    entityManager.importMap(&map);
+    this->mapFileName = fileName;
 }
 
 Game::~Game(){
@@ -53,6 +51,19 @@ void Game::renderScoreBoard(){
 }
 
 void Game::run(){
+    if (this->mapFileName.size() == 0){
+        this->map = Map();
+    } else {
+        try{
+            this->map = Map(this->mapFileName);
+        } catch (std::runtime_error const&e){ //Catches any error with the map file
+            TextScreen textScreen = TextScreen(config.mapErrorMsg + "\n" + string(e.what()) + "\n \n");
+            textScreen.show();
+            return;
+        }
+    }
+    entityManager.importMap(&this->map);
+
     initscr();
 
     start_color();
@@ -79,7 +90,6 @@ void Game::run(){
     int ch; //Temporary character loaded from keyboard
     keypad(window, TRUE );
     
-    map.calculateScoreTarget();
     renderMap(map, window);
     entityManager.render();
     wrefresh(window);
@@ -156,6 +166,11 @@ void Game::run(){
     wrefresh(window);
     delwin(window);
     endwin();
+}
+
+ScreenState Game::show(){
+    this->run();
+    return ScreenState::MENU;
 }
 
 GameState Game::getGameState(){

@@ -4,8 +4,22 @@ using namespace std;
 namespace fs = std::filesystem;
 
 void SelectFileName::load(){
-    for (const auto & entry : fs::directory_iterator(this->path)) {
-        content.emplace_back(entry.path());
+    this->content.clear();
+    this->content.emplace_back(config.defaultMapPlaceholder);
+    //Check if the folder exists
+    if (!fs::exists(config.mapsFolder)){
+        //Create the folder
+        fs::create_directory(config.mapsFolder);
+    }
+
+    try{
+        for (const auto & entry : fs::directory_iterator(this->path)) {
+            content.emplace_back(entry.path());
+        }
+    } catch (std::filesystem::filesystem_error const &e){ //Catches the error when the map folder is not found
+        TextScreen textScreen = TextScreen(config.mapErrorMsg + config.folderErrorMsg);
+        textScreen.show();
+        exit(1);
     }
 }
 
@@ -88,10 +102,11 @@ ScreenState SelectFileName::show() {
     endwin();
 
     this->chosenFileName = this->content[sel];
-    
-    return ScreenState::MENU;
-}
 
-string SelectFileName::getChosenFileName() {
-    return this->chosenFileName;
+    //Copy the chosen map as the default
+    ifstream  src(this->chosenFileName, std::ios::binary);
+    ofstream  dst(config.defaultMapFileName, std::ios::binary);
+    dst << src.rdbuf();
+    
+    return ScreenState::GAME;
 }

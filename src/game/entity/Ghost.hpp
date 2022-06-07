@@ -31,6 +31,7 @@ class Ghost : public Entity{
         int state = 0;
         Position nextPosition;
         std::vector<Angle> path; 
+        
     public:
         Ghost();
         Ghost(Position position, Angle angle);

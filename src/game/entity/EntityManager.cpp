@@ -5,12 +5,15 @@ using namespace std;
 
 
 EntityManager::EntityManager(){
-    totalTicks = 0;
-    ghostsReleased = 0;
+    this->totalTicks = 0;
+    this->ghostsReleased = 0;
 }
 
 EntityManager EntityManager::importMap(Map * map){
+    this->totalTicks = 0;
+    this->ghostsReleased = 0;
     this->map = map;
+    this->ghosts.clear();
 
     for (int y = 0; y < map->getHeight(); y++){
         for (int x = 0; x < map->getWidth(); x++){
@@ -32,6 +35,7 @@ EntityManager EntityManager::importMap(Map * map){
         }
     }
 
+    player.resetScore();
     player.importMap(map);
     for (auto ghost : ghosts){
         ghost->importMap(map);

@@ -15,6 +15,7 @@
 #include <vector>
 #include <memory>
 #include "../Config.hpp"
+#include "../screen/Screen.hpp"
 
 
 /**
@@ -37,12 +38,13 @@ enum GameState{
  * @details It is responsible for the game logic
  */
 
-class Game{
+class Game : public EntityManager, public Map, public Screen{
     public:
         Config config;
     private:
         GameState gameState = PLAYING;
         Map map;
+        std::string mapFileName = "";
         EntityManager entityManager;
         
         int tickLength = config.tickLength;
@@ -54,6 +56,8 @@ class Game{
         ~Game();
         void renderScoreBoard();
         void run();
+
+        ScreenState show();
 
         GameState getGameState();
 };

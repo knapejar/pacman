@@ -1,10 +1,12 @@
 #pragma once
 
 #include "Screen.hpp"
+#include "TextScreen.hpp"
 #include <ncurses.h>
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <filesystem>
 
 
@@ -35,11 +37,4 @@ class SelectFileName : public Screen{
          * @return ScreenState 
          */
         ScreenState show();
-
-        /**
-         * @brief Get the Chosen File Name object - the selected file name
-         * 
-         * @return std::string 
-         */
-        std::string getChosenFileName();
 };

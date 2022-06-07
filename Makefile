@@ -1,10 +1,10 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -pedantic -Wno-long-long -O0 -ggdb
-EXECUTABLE = pacman
+EXECUTABLE = knapejar
 SOURCES := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp)
 CHECK = valgrind
 CHECKFLAGS = --leak-check=full --tool=memcheck
-LDFLAGS = -lncursesw
+LDFLAGS = -lncursesw -lstdc++fs
 
 ## Colors
 

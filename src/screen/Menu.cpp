@@ -9,7 +9,7 @@ Menu::Menu() {
 }
 
 ScreenState Menu::show() {
-    char list[4][6] = { "Play", "Load", "HowTo", "Exit" };
+    char list[4][7] = { "Play", "Load", "HowTo", "Exit" };
     char item[9]; //Currently printed item
     int ch, i = 0; //Temporary char from keyboard, i - current item
     initscr();

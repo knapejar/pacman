@@ -13,8 +13,8 @@ INPUT                  = ./src
 
 
 
-# Generates the index.html page at ./docs/html/index.html 
-OUTPUT_DIRECTORY       = ./docs 
+# Generates the index.html page at ./doc/html/index.html 
+HTML_OUTPUT       = ./doc
 
 
 

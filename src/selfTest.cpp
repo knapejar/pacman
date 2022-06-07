@@ -15,7 +15,7 @@ SelfTest::~SelfTest(){
 bool SelfTest::test(){
     assert(true);
     try{
-    if (verbose)
+        if (verbose)
             cout << "Angle library test" << endl;
         Angle angle = Angle(0);
         assert(angle.getAngle() == 0);
