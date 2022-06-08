@@ -100,22 +100,22 @@ Map::~Map(){
     }
 }
 
-Field Map::getField(Position position){
+Field Map::getField(Position position) const{
     if (position.getX() < 0 || position.getX() >= width || position.getY() < 0 || position.getY() >= height){
         return Field(WALL);
     }
     return map[position.getY()][position.getX()];
 }
 
-int Map::getWidth(){
+int Map::getWidth() const{
     return this->width;
 }
 
-int Map::getHeight(){
+int Map::getHeight() const{
     return this->height;
 }
 
-int Map::getGhostReleaseTimeout(){
+int Map::getGhostReleaseTimeout() const{
     return this->ghostReleaseTimeout;
 }
 
@@ -128,16 +128,16 @@ ostream & Map::render(ostream & os){
     return os;
 }
 
-bool Map::wall(Position position){
+bool Map::wall(Position position) const{
     return map[position.getY()][position.getX()].wall();
 }
-bool Map::point(Position position){
+bool Map::point(Position position) const{
     return map[position.getY()][position.getX()].point();
 }
-bool Map::ghost(Position position){
+bool Map::ghost(Position position) const{
     return map[position.getY()][position.getX()].ghost();
 }
-bool Map::pacman(Position position){
+bool Map::pacman(Position position) const{
     return map[position.getY()][position.getX()].pacman();
 }
 
@@ -152,25 +152,25 @@ void Map::calculateScoreTarget(){
     }
 }
 
-int Map::getTotalScore(){
+int Map::getTotalScore() const{
     return this->scoreTarget;
 }
 
-bool Map::collect(Position position){
+bool Map::collect(Position & position){
     if (this->map[position.getY()][position.getX()].point()){
         this->map[position.getY()][position.getX()] = NONE;
         return true;
     }
     return false;
 }
-bool Map::pickUpCherry(Position position){
+bool Map::pickUpCherry(Position & position){
     if (this->map[position.getY()][position.getX()].toChar() == 'o'){
         this->map[position.getY()][position.getX()] = NONE;
         return true;
     }
     return false;
 }
-bool Map::pickUpBonus(Position position){
+bool Map::pickUpBonus(Position & position){
     if (this->map[position.getY()][position.getX()].toChar() == '*'){
         this->map[position.getY()][position.getX()] = NONE;
         return true;

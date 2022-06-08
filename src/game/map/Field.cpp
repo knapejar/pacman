@@ -16,7 +16,7 @@ Field::~Field(){
     
 }
 
-Field Field::getField(){
+Field Field::getField() const{
     return Field();
 }
 
@@ -97,19 +97,19 @@ ostream & Field::render(ostream & os){
     return os;
 }
 
-bool Field::wall(){
+bool Field::wall() const{
     return field == WALL;
 }
-bool Field::point(){
+bool Field::point() const{
     return field == POINT;
 }
-bool Field::ghost(){
+bool Field::ghost() const{
     return field == GHOST || field == BLINKY || field == CLYDE || field == INKY || field == PINKY;
 }
-bool Field::pacman(){
+bool Field::pacman() const{
     return field == PACMAN;
 }
-char Field::toChar(){
+char Field::toChar() const{
     switch (field){
         case NONE:
             return ' ';

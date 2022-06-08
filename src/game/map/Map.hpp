@@ -64,7 +64,7 @@ class Map{
          * @param position 
          * @param field 
          */
-        void setField(Position position, Field field);
+        void setField(Position & position, Field & field);
 
         /**
          * @brief Get the Field object
@@ -72,28 +72,28 @@ class Map{
          * @param position 
          * @return Field 
          */
-        Field getField(Position position);
+        Field getField(Position position) const;
         
         /**
          * @brief Get the width of the map
          * 
          * @return int 
          */
-        int getWidth();
+        int getWidth() const;
 
         /**
          * @brief Get the height of the map
          * 
          * @return int 
          */
-        int getHeight();
+        int getHeight() const;
 
         /**
          * @brief Get the Ghost Release Timeout object
          * 
          * @return int 
          */
-        int getGhostReleaseTimeout();
+        int getGhostReleaseTimeout() const;
 
         /**
          * @brief Renders the map to the ostream
@@ -108,28 +108,28 @@ class Map{
          * 
          * @param position
          */
-        bool wall(Position position);
+        bool wall(Position position) const;
 
         /**
          * @brief Returns if the field is a point
          * 
          * @param position
          */
-        bool point(Position position);
+        bool point(Position position) const;
 
         /**
          * @brief Returns if the field is a spawn point of a ghost
          * 
          * @param position
          */
-        bool ghost(Position position);
+        bool ghost(Position position) const;
 
         /**
          * @brief Returns if the field is a spawn point of a player
          * 
          * @param position
          */
-        bool pacman(Position position);
+        bool pacman(Position position) const;
 
         /**
          * @brief Returns the score target of the map
@@ -142,7 +142,7 @@ class Map{
          * 
          * @return int 
          */
-        int getTotalScore();
+        int getTotalScore() const;
 
         /**
          * @brief Collects the point from the given position - used by the Player class
@@ -151,7 +151,7 @@ class Map{
          * @return true if there was a point
          * @return false if there was no point
          */
-        bool collect(Position position);
+        bool collect(Position & position);
 
         /**
          * @brief Picks up the cherry bonus from the given position - used by the Player class
@@ -160,7 +160,7 @@ class Map{
          * @return true if there was a cherry bonus
          * @return false if there was no cherry bonus
          */
-        bool pickUpCherry(Position position);
+        bool pickUpCherry(Position & position);
 
         /**
          * @brief Picks up the bonus from the given position - used by the Player class
@@ -169,5 +169,5 @@ class Map{
          * @return true if there was a bonus
          * @return false if there was no bonus
          */
-        bool pickUpBonus(Position position);
+        bool pickUpBonus(Position & position);
 };
