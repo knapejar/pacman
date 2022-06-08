@@ -19,15 +19,19 @@ bool SelfTest::test(){
             cout << "Angle library test" << endl;
         Angle angle = Angle(0);
         assert(angle.getAngle() == 0);
-        angle.setAngle(1);
-        assert(angle.getAngle() == 1);
-        angle.rotate(1);
-        assert(angle.getAngle() == 2);
-        angle.rotate(-6);
+        int a = 1;
+        int b = -6;
+        int c = 7;
+        angle.setAngle(a);
+        assert(angle.getAngle() ==a);
+        angle.rotate(a);
+        assert(angle.getAngle() == a + a);
+        angle.rotate(b);
         assert(angle.getAngle() == 0);
-        angle.rotate(7);
+        angle.rotate(c);
         assert(angle.getAngle() == 3);
-        angle += -1;
+        Angle angle2 = Angle(1);
+        angle -= angle2;
         assert(angle.getAngle() == 2);
 
         if (verbose)

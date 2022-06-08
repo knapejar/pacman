@@ -40,11 +40,6 @@ class Ghost : public Entity{
         ~Ghost();
 
         /**
-         * @brief Virtual method to be implemented by the child classes used to find the path to the desired position
-         */
-        virtual void calculatePath() = 0;
-
-        /**
          * @brief Virtual method to be implemented by the child classes that is responsible for the ghost behaviour
          */
         virtual void tick(int tick, Position playerPosition) = 0;

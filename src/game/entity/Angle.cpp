@@ -9,18 +9,18 @@ Angle::Angle(int angle){
 Angle::~Angle(){
 
 }
-int Angle::getAngle(){
+int Angle::getAngle() const{
     return angle;
 }
-Angle Angle::setAngle(int angle){
+Angle Angle::setAngle(int & angle){
     this->angle = angle;
     return *this;
 }
-Angle Angle::setAngle(Angle angle){
+Angle Angle::setAngle(Angle & angle){
     this->angle = angle.getAngle();
     return *this;
 }
-Angle Angle::rotate(int angle){
+Angle Angle::rotate(int & angle){
     this->angle = (this->angle + angle) % 4;
     return *this;
 }

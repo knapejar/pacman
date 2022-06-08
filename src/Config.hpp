@@ -13,12 +13,22 @@
  * @details - Longer messages and error messages
  */
 
+enum ghostDifficulty {
+    EASY,
+    HARD
+};
+
 class Config{
     public:
         int tickLength = 100; // One tick length in ms
         int playerHealth = 3; // Player health at the beginning of the game
         bool performSelfTest = false;
         bool selfTestVerbose = false;
+
+        ghostDifficulty blinkyDifficulty = EASY;
+        ghostDifficulty clydeDifficulty = EASY;
+        ghostDifficulty inkyDifficulty = EASY;
+        ghostDifficulty pinkyDifficulty = EASY;
 
         std::string entityRenderBox = "██";
         std::string entityRenderBoxLower = "▄▄";

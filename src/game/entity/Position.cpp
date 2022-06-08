@@ -10,17 +10,17 @@ Position::Position(int x, int y){
 Position::~Position(){
 
 }
-int Position::getX(){
+int Position::getX() const{
     return this->x;
 }
-int Position::getY(){
+int Position::getY() const{
     return this->y;
 }
-Position Position::setX(int x){
+Position Position::setX(int & x){
     this->x = x;
     return *this;
 }
-Position Position::setY(int y){
+Position Position::setY(int & y){
     this->y = y;
     return *this;
 }
@@ -34,7 +34,7 @@ Position Position::move(int x, int y){
     this->y += y;
     return *this;
 }
-Position Position::move(Position position){
+Position Position::move(Position & position){
     this->x += position.getX();
     this->y += position.getY();
     return *this;
@@ -72,6 +72,6 @@ bool Position::operator==(Position position){
 bool Position::operator!=(Position position){
     return this->x != position.getX() || this->y != position.getY();
 }
-int Position::distance(Position position){
+int Position::distance(Position position) const{
     return abs(this->x - position.getX()) + abs(this->y - position.getY());
 }

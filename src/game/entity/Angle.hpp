@@ -13,11 +13,11 @@ class Angle{
         Angle();
         Angle(int angle);
         ~Angle();
-        int getAngle();
-        Angle setAngle(int angle);
-        Angle setAngle(Angle angle);
-        Angle rotate(int angle);
-        Angle rotate(Angle angle);
+        int getAngle() const;
+        Angle setAngle(int & angle);
+        Angle setAngle(Angle & angle);
+        Angle rotate(int & angle);
+        Angle rotate(Angle & angle);
         Angle operator+(Angle angle);
         Angle operator-(Angle angle);
         Angle operator+=(Angle angle);
