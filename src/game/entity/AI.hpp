@@ -14,6 +14,24 @@
 
 #include "../../screen/TextScreen.hpp"
 
+
+
+/**
+ * @brief Position node used by the depth first search algorithm
+ */
+
+struct Node{
+    Position position;
+    int distance;
+    bool operator>(const Node& a) const{
+        return this->distance > a.distance;
+    }
+};
+
+/**
+ * @brief class that is responsible for pathfinding the ghosts
+ */
+
 class AI{
     public:
         std::vector<Angle>calculatePath(Map * map, Position start, Position end);

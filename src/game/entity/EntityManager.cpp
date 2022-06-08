@@ -38,6 +38,7 @@ EntityManager EntityManager::importMap(Map * map){
     player.resetLives();
     player.resetScore();
     player.importMap(map);
+    player.importGhostsEatable(&ghostsEatable);
     for (auto ghost : ghosts){
         ghost->importMap(map);
     }    
@@ -116,6 +117,16 @@ bool EntityManager::gameEnded(){
     return false;*/
     
     if (minimalDistance < 1){
+        if (ghostsEatable > 0){
+            for (auto ghost : ghosts){
+                int distance = player.getPosition().distance(ghost->getPosition());
+                if (distance < 1){
+                    ghost->respawn();
+                }
+            }
+            return false;
+        }
+
         if (player.getLives() > 1){
             player.loseLife();
             player.hide(window);

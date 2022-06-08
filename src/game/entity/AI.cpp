@@ -2,13 +2,6 @@
 
 using namespace std;
 
-struct Node{
-    Position position;
-    int distance;
-    bool operator>(const Node& a) const{
-        return this->distance > a.distance;
-    }
-};
 
 vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
     //Declare node

@@ -40,6 +40,7 @@ class EntityManager{
 
         size_t totalTicks = 0;
         size_t ghostsReleased = 0;
+        int ghostsEatable = 0;
 
     public:
         Player player;

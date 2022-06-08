@@ -16,12 +16,14 @@ Map::Map(){
     fieldType c = INKY;
     fieldType d = PINKY;
     fieldType w = WALL;
+    fieldType o = CHERRY;
+    fieldType q = BONUS;
     map = { {Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
-            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(o),Field(w),Field(p),Field(w),Field(p),Field(w),Field(q),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
             {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(a),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
@@ -29,7 +31,7 @@ Map::Map(){
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w)},
             {Field(n),Field(n),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(s),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(n),Field(n)},
             {Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(w),Field(p),Field(w),Field(w),Field(w)},
-            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w),Field(p),Field(w),Field(p),Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
+            {Field(w),Field(p),Field(p),Field(p),Field(p),Field(q),Field(w),Field(p),Field(w),Field(p),Field(w),Field(o),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},
             {Field(w),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(p),Field(w)},
             {Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w),Field(w),Field(p),Field(w)},

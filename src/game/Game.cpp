@@ -74,6 +74,7 @@ void Game::run(){
     init_pair(4, COLOR_GREEN, COLOR_BLACK);
     init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(6, COLOR_BLUE, COLOR_BLACK);
+    init_pair(8, 7, COLOR_BLACK); //12
 
     curs_set(0);
 
@@ -131,7 +132,7 @@ void Game::run(){
         //Second stage in the tick
         entityManager.hide().render();
         renderScoreBoard();
-        
+
         wrefresh(window);
 
         //Check if the player has won
@@ -153,9 +154,9 @@ void Game::run(){
     if (gameState == GameState::WON){
         message = "You WON!\n \n";
     } else if (gameState == GameState::GAMEOVER){
-        message = "Game Over!\n \n";
+        message = "Game Over!\nTry harder :)\n \n";
     } else {
-        message = "Gave up!\n \n";
+        message = "You gave up!\n \n";
     }
     
     TextScreen textScreen = TextScreen(message);

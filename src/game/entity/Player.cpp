@@ -61,6 +61,11 @@ Player Player::keyboardInput(int input){
 }
 
 Player Player::tick(){ //Overrided function to move the player
+    if (*(this->ghostsEatable) <= 0){
+        this->color = 2;
+    } else {
+        *(this->ghostsEatable) -= 1;
+    }
     this->lastPosition = this->position;
     Position nextPosition = this->position;
     nextPosition.move(this->angle, 1);
@@ -75,7 +80,10 @@ Player Player::tick(){ //Overrided function to move the player
         this->lives += 1;
     }
     if (map->pickUpCherry(this->position)){
-        this->lives += 1;
+        this->color = 7;
+        if (this->ghostsEatable != nullptr){
+            *(this->ghostsEatable) = config.ghostsEatableDuration;
+        }
     }
     return *this;
 }
@@ -96,9 +104,20 @@ int Player::getLives(){
 }
 Player Player::loseLife(){
     this->lives--;
+
+    //Enable the imunity for a certain amount of time
+    this->color = 7;
+    if (this->ghostsEatable != nullptr){
+        *(this->ghostsEatable) = config.respawnImunityDuration;
+    }
+
     return *this;
 }
 Player Player::resetLives(){
     this->lives = config.playerHealth;
     return *this;
+}
+
+void Player::importGhostsEatable(int * ghostsEatable){
+    this->ghostsEatable = ghostsEatable;
 }

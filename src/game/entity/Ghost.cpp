@@ -44,6 +44,6 @@ void Ghost::normal(){
 }
 void Ghost::respawn(){
     this->position = this->spawnPosition;
-    this->angle = Angle(2);
+    this->angle = Angle(0);
     this->state = GhostState(RANDOM);
 }

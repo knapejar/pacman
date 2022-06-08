@@ -18,6 +18,7 @@ class Player : public Entity{
         Angle targetAngle;
         int score = 0;
         int lives = config.playerHealth;
+        int * ghostsEatable = nullptr;
     public:
         Player();
         Player(Position position, Angle angle);
@@ -79,4 +80,10 @@ class Player : public Entity{
          * @return Player 
          */
         Player resetLives();
+
+        /**
+         * @brief Get the GhostsEatable int to tell EntityManager if the player can eat the ghosts
+         */
+
+        void importGhostsEatable(int * ghostsEatable);
 };
