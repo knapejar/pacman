@@ -12,5 +12,5 @@ class Clyde : public Ghost{
     public:
         Clyde();
         ~Clyde();
-        void tick(int tick, Position playerPosition);
+        void tick(const int & tick, const Position & playerPosition);
 };

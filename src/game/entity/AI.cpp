@@ -3,7 +3,7 @@
 using namespace std;
 
 
-vector<Angle> AI::calculatePath(Map * map, Position start, Position end){
+vector<Angle> AI::calculatePath(Map * map, const Position & start, const Position & end){
     //Declare node
 
     priority_queue<Node, vector<Node>, greater<Node>> queue;
@@ -110,6 +110,15 @@ Position AI::randomPosition(Map * map){
     Position position;
     position = Position(rand() % map->getWidth(), rand() % map->getHeight());
     while (map->wall(position)){
+        position = Position(rand() % map->getWidth(), rand() % map->getHeight());
+    }
+    return position;
+}
+
+Position AI::awayFromPlayer(Map * map, const Position & playerPosition){
+    Position position;
+    position = Position(rand() % map->getWidth(), rand() % map->getHeight());
+    while (map->wall(position) || position.distance(playerPosition) < 5){
         position = Position(rand() % map->getWidth(), rand() % map->getHeight());
     }
     return position;

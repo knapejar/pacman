@@ -9,8 +9,6 @@ SelfTest::SelfTest(){
 SelfTest::SelfTest(bool verbose){
     this->verbose = verbose;
 }
-SelfTest::~SelfTest(){
-}
 
 bool SelfTest::test(){
     assert(true);
@@ -47,7 +45,8 @@ bool SelfTest::test(){
 
         if (verbose)
             cout << "Map library test" << endl;
-        Map map = Map("examples/medium.pacman");
+        string mapPath = "examples/medium.pacman";
+        Map map = Map(mapPath);
         assert(map.getWidth() == 19);
         assert(map.getHeight() == 11);
         assert(map.getField(Position(0, 0)).wall());

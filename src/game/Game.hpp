@@ -38,26 +38,46 @@ enum GameState{
  * @details It is responsible for the game logic
  */
 
-class Game : public EntityManager, public Map, public Screen{
+class Game : public Screen{
     public:
         Config config;
     private:
         GameState gameState = PLAYING;
-        Map map;
+        int tickLength = config.tickLength;
+        int infoScreenSize = 3;
+
         std::string mapFileName = "";
+        Map map;
         EntityManager entityManager;
         
-        int tickLength = config.tickLength;
-        WINDOW * window;
-        int infoScreenSize = 3;
-    public:
-        Game();
-        Game(std::string fileName);
-        ~Game();
+        /**
+         * @brief Renders the scoreboard inside the game window, this method is used internally
+         */
         void renderScoreBoard();
+    public:
+        /**
+         * @brief Construct a new Game object with the default map
+         */
+        Game();
+
+        /**
+         * @brief Construct a new Game object from the given file
+         * 
+         * @param fileName (file from the example folder by default)
+         */
+        Game(std::string & fileName);
+
+        /**
+         * @brief The main game method
+         */
         void run();
 
         ScreenState show();
 
+        /**
+         * @brief Get the Game State object which controlls the main game loop
+         * 
+         * @return GameState 
+         */
         GameState getGameState();
 };

@@ -58,14 +58,14 @@ class Entity{
          * 
          * @return std::string 
          */
-        std::string getName();
+        std::string getName() const;
 
         /**
          * @brief Get the Position object
          * 
          * @return Position 
          */
-        Position getPosition();
+        Position getPosition() const;
 
         /**
          * @brief Set the Position object
@@ -80,7 +80,7 @@ class Entity{
          * 
          * @return Angle 
          */
-        Angle getAngle();
+        Angle getAngle() const;
 
         /**
          * @brief Set the Angle object
@@ -112,7 +112,7 @@ class Entity{
          * @param window 
          * @return Entity 
          */
-        Entity hide(WINDOW *window);
+        Entity hide(WINDOW * window);
 
         /**
          * @brief Renders the entity
@@ -120,7 +120,7 @@ class Entity{
          * @param window 
          * @return Entity 
          */
-        Entity render(WINDOW *window);
+        Entity render(WINDOW * window);
 
         /**
          * @brief Renders the entity between two ticks to make the smooth animation
@@ -128,7 +128,7 @@ class Entity{
          * @param window 
          * @return Entity 
          */
-        Entity renderHalf(WINDOW *window);
+        Entity renderHalf(WINDOW * window);
 
         /**
          * @brief Respawns the entity at the spawn position

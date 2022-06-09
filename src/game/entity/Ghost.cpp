@@ -19,7 +19,7 @@ Ghost::Ghost(Position position, Angle angle):Entity(position, angle){
 Ghost::~Ghost(){
 
 }
-string Ghost::getState(){
+string Ghost::getStateString(){
     switch (this->state){
         case CAGED:
             return "Caged";
@@ -35,6 +35,9 @@ string Ghost::getState(){
             return "Hunting";
     }
 }
+GhostState Ghost::getState(){
+    return (GhostState)this->state;
+}
 void Ghost::frighten(){
     this->path.clear();
     this->state = FRIGHTENED;
@@ -46,4 +49,36 @@ void Ghost::respawn(){
     this->position = this->spawnPosition;
     this->angle = Angle(0);
     this->state = GhostState(RANDOM);
+}
+void Ghost::frightenedBehaviour(int tick, Position playerPosition){
+    this->lastPosition = this->position;
+    Position nextPosition = this->position;
+
+    if (this->position.distance(playerPosition) < 3){
+        this->path.clear();
+    }
+
+    int maxAttempts = 1000;
+    while (this->path.size() <= 0){
+        this->path = this->ai.calculatePath(this->map, this->position, ai.awayFromPlayer(map, playerPosition));
+        reverse(this->path.begin(), this->path.end());
+        maxAttempts--;
+        if (maxAttempts <= 0){
+            return;
+        }
+        Position tempPosition = this->position;
+        for (auto &p : this->path){
+            tempPosition.move(p, 1);
+            teleportCheck(tempPosition);
+            if (tempPosition.distance(playerPosition) < 2){
+                this->path.clear();
+                break;
+            }
+        }
+    }
+    nextPosition.move(this->path.at(path.size() - 1), 1);
+    this->path.pop_back();
+
+    this->position = nextPosition;
+    teleportCheck();
 }

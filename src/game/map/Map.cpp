@@ -41,7 +41,7 @@ Map::Map(){
     calculateScoreTarget();
 }
 
-Map::Map(std::string filename){
+Map::Map(std::string & filename){
     ifstream file(filename);
     if (!file.is_open()){
         throw std::runtime_error("Could not open file");

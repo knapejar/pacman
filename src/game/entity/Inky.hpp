@@ -12,5 +12,5 @@ class Inky : public Ghost{
     public:
         Inky();
         ~Inky();
-        void tick(int tick, Position playerPosition);
+        void tick(const int & tick, const Position & playerPosition);
 };

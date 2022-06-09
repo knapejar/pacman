@@ -8,11 +8,8 @@ Game::Game(){
     this->mapFileName = "";
 }
 
-Game::Game(string fileName){
+Game::Game(string & fileName){
     this->mapFileName = fileName;
-}
-
-Game::~Game(){
 }
 
 
@@ -42,11 +39,11 @@ void Game::renderScoreBoard(){
     mvwprintw(window, map.getHeight(), 0, "Your score: %d / %d %d%c", entityManager.player.getScore(), map.getTotalScore(), percent, '%');
     mvwprintw(window, map.getHeight() + 1, 0, "Lives: %d, press q to quit", entityManager.player.getLives());
     wattron(window, COLOR_PAIR(1));
-    mvwprintw(window, map.getHeight() + infoScreenSize - 1, 0, "%-9s %-9s", "Ghost", "State");
+    mvwprintw(window, map.getHeight() + infoScreenSize - 1, 0, "%-9s %-11s", "Ghost", "State");
     for (size_t i = 0; i < entityManager.ghosts.size(); i++){
         //Print Ghost name in its color
         wattron(window, COLOR_PAIR(entityManager.ghosts[i]->color));
-        mvwprintw(window, map.getHeight() + infoScreenSize + i, 0, "%-9s %-9s", entityManager.ghosts[i]->getName().c_str(), entityManager.ghosts[i]->getState().c_str());
+        mvwprintw(window, map.getHeight() + infoScreenSize + i, 0, "%-9s %-11s", entityManager.ghosts[i]->getName().c_str(), entityManager.ghosts[i]->getStateString().c_str());
     }
 }
 
@@ -74,7 +71,7 @@ void Game::run(){
     init_pair(4, COLOR_GREEN, COLOR_BLACK);
     init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(6, COLOR_BLUE, COLOR_BLACK);
-    init_pair(8, 7, COLOR_BLACK); //12
+    init_pair(7, 8, COLOR_BLACK); //12
 
     curs_set(0);
 
@@ -172,8 +169,4 @@ void Game::run(){
 ScreenState Game::show(){
     this->run();
     return ScreenState::MENU;
-}
-
-GameState Game::getGameState(){
-    return gameState;
 }

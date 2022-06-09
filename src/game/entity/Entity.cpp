@@ -30,10 +30,10 @@ Entity Entity::importMap(Map * map){
     this->map = map;
     return *this;
 }
-string Entity::getName(){
+string Entity::getName() const{
     return this->name;
 }
-Position Entity::getPosition(){
+Position Entity::getPosition() const{
     return this->position;
 }
 Entity Entity::setPosition(Position position){
@@ -42,7 +42,7 @@ Entity Entity::setPosition(Position position){
     this->spawnPosition = this->position;
     return *this;
 }
-Angle Entity::getAngle(){
+Angle Entity::getAngle() const{
     return this->angle;
 }
 Entity Entity::setAngle(Angle angle){
@@ -50,7 +50,7 @@ Entity Entity::setAngle(Angle angle){
     return *this;
 }
 
-Entity Entity::hide(WINDOW *window){
+Entity Entity::hide(WINDOW * window){
     if (window == nullptr)
         return *this;
     wattron(window, COLOR_PAIR(1));
@@ -63,7 +63,7 @@ Entity Entity::hide(WINDOW *window){
     return *this;
 }
 
-Entity Entity::render(WINDOW *window){
+Entity Entity::render(WINDOW * window){
     if (window == nullptr)
         return *this;
     wattron(window, COLOR_PAIR(color));
@@ -71,7 +71,7 @@ Entity Entity::render(WINDOW *window){
     return *this;
 }
 
-Entity Entity::renderHalf(WINDOW *window){
+Entity Entity::renderHalf(WINDOW * window){
     if (window == nullptr)
         return *this;
     if (position == lastPosition){

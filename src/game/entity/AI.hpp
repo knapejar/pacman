@@ -34,6 +34,29 @@ struct Node{
 
 class AI{
     public:
-        std::vector<Angle>calculatePath(Map * map, Position start, Position end);
+        /**
+         * @brief Constructs a new std::vector<Angle>calculate Path containing the closest path to the desired location
+         * 
+         * @param map 
+         * @param start - the start position
+         * @param end - the end position
+         */
+        std::vector<Angle>calculatePath(Map * map, const Position & start, const Position & end);
+
+        /**
+         * @brief Chooses a random spot on the map, which is not a wall
+         * 
+         * @param map
+         * @return Position 
+         */
         Position randomPosition(Map * map);
+
+        /**
+         * @brief Chooses a random spot on the map, which is not a wall or nearby the player
+         * 
+         * @param map 
+         * @param playerPosition 
+         * @return Position 
+         */
+        Position awayFromPlayer(Map * map, const Position & playerPosition);
 };

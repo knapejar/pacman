@@ -50,7 +50,7 @@ class Map{
          * 
          * @param fileName 
          */
-        Map(std::string fileName);
+        Map(std::string & fileName);
 
         /**
          * @brief Destroy the Map object

@@ -14,9 +14,13 @@ Blinky::~Blinky(){
 
 }
 
-void Blinky::tick(int tick, Position playerPosition){
+void Blinky::tick(const int & tick, const Position & playerPosition){
     if (this->state == CAGED)
         return;
+    if (this->state == FRIGHTENED){
+        frightenedBehaviour(tick, playerPosition);
+        return;
+    }
     this->state = SCATTER;
 
     this->lastPosition = this->position;

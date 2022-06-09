@@ -87,7 +87,7 @@ EntityManager EntityManager::tick(){
 
     player.tick();
     for (auto ghost : ghosts){
-        ghost->tick(1, player.getPosition());
+        ghost->tick(totalTicks, player.getPosition());
     }
     return *this;
 }
@@ -96,7 +96,18 @@ bool EntityManager::gameEnded(){
     int minimalDistance = INT_MAX;
     Position nextPosition = player.getPosition();
     nextPosition.move(player.getAngle(), 1);
+
     for (auto ghost : ghosts){
+        if (ghostsEatable > 0){
+            if (ghost->getState() != GhostState::FRIGHTENED && ghost->getState() != GhostState::CAGED){
+                ghost->frighten();
+            }
+        } else {
+            if (ghost->getState() == GhostState::FRIGHTENED){
+                ghost->normal();
+            }
+        }
+
         int distance = player.getPosition().distance(ghost->getPosition());
         if (distance < minimalDistance){
             minimalDistance = distance;
@@ -106,15 +117,6 @@ bool EntityManager::gameEnded(){
             break;
         }
     }
-
-    /*
-    //Sežrání ducha
-    if (minimalDistance < 1){
-        for (auto ghost : ghosts){
-            ghost->respawn();
-        }
-    }
-    return false;*/
     
     if (minimalDistance < 1){
         if (ghostsEatable > 0){

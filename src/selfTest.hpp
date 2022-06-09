@@ -25,7 +25,6 @@ class SelfTest{
     public:
         SelfTest();
         SelfTest(bool verbose);
-        ~SelfTest();
 
         /**
          * @brief Performs the test

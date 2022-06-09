@@ -14,9 +14,13 @@ Clyde::~Clyde(){
 
 }
 
-void Clyde::tick(int tick, Position playerPosition){
+void Clyde::tick(const int & tick, const Position & playerPosition){
     if (this->state == CAGED)
         return;
+    if (this->state == FRIGHTENED){
+        frightenedBehaviour(tick, playerPosition);
+        return;
+    }
 
     this->lastPosition = this->position;
     Position nextPosition = this->position;

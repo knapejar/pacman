@@ -28,7 +28,7 @@ Player::~Player(){
     
 }
 
-Player Player::keyboardInput(int input){
+Player Player::keyboardInput(int & input){
     switch(input){
         case KEY_UP:
             setAngle(0);

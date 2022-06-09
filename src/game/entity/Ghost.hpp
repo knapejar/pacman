@@ -42,14 +42,22 @@ class Ghost : public Entity{
         /**
          * @brief Virtual method to be implemented by the child classes that is responsible for the ghost behaviour
          */
-        virtual void tick(int tick, Position playerPosition) = 0;
+        virtual void tick(const int & tick, const Position & playerPosition) = 0;
 
         /**
-         * @brief Get the State object
+         * @brief Get the ghost state
          * 
          * @return std::string 
          */
-        std::string getState();
+        std::string getStateString();
+
+        /**
+         * @brief Get the ghost state
+         * 
+         * @return std::string 
+         */
+
+        GhostState getState();
 
         /**
          * @brief Frightens the ghost and sets its state to FRIGHTENED
@@ -65,4 +73,12 @@ class Ghost : public Entity{
          * @brief Respawns the ghost at it's initial position
          */
         void respawn();
+
+        /**
+         * @brief The similar behaviour for the ghosts to avoid the player when ghosts can be eaten
+         * 
+         * @param tick 
+         * @param playerPosition 
+         */
+        void frightenedBehaviour(int tick, Position playerPosition);
 };

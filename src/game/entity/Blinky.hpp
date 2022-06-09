@@ -12,5 +12,5 @@ class Blinky : public Ghost{
     public:
         Blinky();
         ~Blinky();
-        void tick(int tick, Position playerPosition);
+        void tick(const int & tick, const Position & playerPosition);
 };

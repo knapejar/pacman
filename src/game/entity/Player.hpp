@@ -30,7 +30,7 @@ class Player : public Entity{
          * @param input 
          * @return Player 
          */
-        Player keyboardInput(int input);
+        Player keyboardInput(int & input);
 
         /**
          * @brief Method performing one tick of the game logic (especially the player movement)
