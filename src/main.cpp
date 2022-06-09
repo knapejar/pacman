@@ -30,11 +30,11 @@ int main(){
         SelfTest(config.selfTestVerbose).test();
     }
 
-    vector<unique_ptr<Screen>> screens;
-    screens.emplace_back(make_unique<Menu>());
-    screens.emplace_back(make_unique<Game>(config.defaultMapFileName));
-    screens.emplace_back(make_unique<SelectFileName>(config.mapsFolder));
-    screens.emplace_back(make_unique<TextScreen>(config.about));
+    vector<shared_ptr<Screen>> screens;
+    screens.emplace_back(make_shared<Menu>());
+    screens.emplace_back(make_shared<Game>(config.defaultMapFileName));
+    screens.emplace_back(make_shared<SelectFileName>(config.mapsFolder));
+    screens.emplace_back(make_shared<TextScreen>(config.about));
     ScreenState current = ScreenState::MENU;
 
     while (current != ScreenState::EXIT)
